@@ -12,26 +12,46 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 /* Banner Header */
 .banner-header {
-  width: 250px;        
-  height: 450px;       
-  background: linear-gradient(135deg, #000, #111); 
+  width: 600px;          
+  height: 150px;         
+  background: linear-gradient(135deg, #111, #222); 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 0 auto 40px;      
-  border-radius: 15px; 
-  box-shadow: 0 0 30px rgba(255, 204, 0, 0.7); 
+  margin: 20px auto;     
+  border-radius: 12px;   
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); 
 }
 
 .banner-header h1 {
   font-family: 'Heebo', Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 900; 
-  color: #FFD700;   
-  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500; 
-  line-height: 1.2;
-  padding: 0 10px;
+  font-size: 2.5rem;
+  font-weight: 900;      
+  color: #ffffff;        /* לבן בולט */
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px #ffb347;   /* נגיעות כתום זוהר עדין */
+  animation: glow 2s infinite alternate;
+}
+
+/* Animation of subtle glowing text */
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 3px #ffffff,
+      0 0 6px #ffb347;
+  }
+  50% {
+    text-shadow:
+      0 0 6px #ffffff,
+      0 0 12px #ffb347;
+  }
+  100% {
+    text-shadow:
+      0 0 3px #ffffff,
+      0 0 6px #ffb347;
+  }
 }
 
 /* Hero */
@@ -96,9 +116,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <!-- Banner Header -->
 <header class="banner-header">
-  <div class="banner-content">
-    <h1>מוניות העיר באר שבע</h1>
-  </div>
+  <h1>מוניות העיר באר שבע</h1>
 </header>
 
 <!-- Hero Section -->
