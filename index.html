@@ -11,11 +11,11 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
 /* Header */
-.header {background:#000;padding:20px 0;position:relative;overflow:hidden;text-align:center;}
-.logo-placeholder img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto;}
+.header {background:#000;padding:20px 0;text-align:center;position:relative;overflow:hidden;}
+.logo-placeholder img {width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;}
 .company-info h1 {font-size:2.5rem;font-weight:700;margin-bottom:5px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
-.company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;margin-bottom:15px;}
-.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;}
+.company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;}
+.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:15px;}
 .btn {padding:15px 25px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 .btn-call {background:#FFA500;color:#000;}
 .btn-call:hover {background:#FFC000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.4);}
@@ -37,12 +37,12 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
 
-/* Cities (List with toggle) */
-.cities {padding:80px 0;background:#111;color:#FFA500;}
-.cities-list {text-align:center;line-height:2.5rem;}
-.city-item {cursor:pointer;color:#FFA500;font-weight:600;transition:all 0.3s ease;margin:0 5px;}
-.city-item:hover {color:#FFC000;}
-#cityContent {margin-top:20px;color:#fff;font-size:1.1rem;text-align:center;}
+/* Cities (List with toggle details) */
+.cities {padding:80px 0;background:#111;color:#FFA500;text-align:center;}
+.cities-list {font-size:1.1rem;line-height:2;}
+.city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
+.city-item:hover {text-decoration:underline;}
+#cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
 
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
@@ -84,16 +84,18 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <!-- Header -->
 <header class="header">
-  <div class="logo-placeholder">
-    <img src="logo.png" alt="לוגו מוניות העיר באר שבע">
-  </div>
-  <div class="company-info">
-    <h1>מוניות העיר באר שבע</h1>
-    <div class="subtitle">בכל חלקי הארץ</div>
-  </div>
-  <div class="contact-buttons">
-    <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
-    <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
+  <div class="container">
+    <div class="logo-placeholder">
+      <img src="logo.png" alt="לוגו מוניות העיר באר שבע">
+    </div>
+    <div class="company-info">
+      <h1>מוניות העיר באר שבע</h1>
+      <div class="subtitle">בכל חלקי הארץ</div>
+    </div>
+    <div class="contact-buttons">
+      <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
+      <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
+    </div>
   </div>
 </header>
 
@@ -123,6 +125,9 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 <section class="cities">
   <div class="container">
     <h2 class="section-title">אזורי השירות שלנו</h2>
+    <p style="font-size:0.9rem;color:#ccc;margin-bottom:15px;">
+      לחצו על העיר הרצויה כדי לראות את השירותים הניתנים באזור זה
+    </p>
     <div class="cities-list">
       <span class="city-item" data-content="שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.">באר שבע</span> ●
       <span class="city-item" data-content="הסעות ונגישות לכל רחבי אופקים.">אופקים</span> ●
@@ -180,12 +185,9 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <script>
 // Cities toggle
-const cityItems = document.querySelectorAll('.city-item');
-const cityContent = document.getElementById('cityContent');
-cityItems.forEach(item => {
+document.querySelectorAll('.city-item').forEach(item => {
   item.addEventListener('click', () => {
-    const content = item.getAttribute('data-content');
-    cityContent.innerHTML = (cityContent.innerHTML === content) ? '' : content;
+    document.getElementById('cityContent').innerText = item.dataset.content;
   });
 });
 
@@ -196,21 +198,31 @@ const reviews = [
   {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
   {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
 ];
+
 const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
+
 function showReview(index){
   const r = reviews[index];
   reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
 }
+
 function slideReviews(direction){
   if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
   else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
   showReview(currentIndex);
 }
-showReview(currentIndex);
-setInterval(() => {currentIndex = (currentIndex + 1) % reviews.length; showReview(currentIndex);}, 2000);
 
-// Contact form
+// הצגת הביקורת הראשונה
+showReview(currentIndex);
+
+// סקרול אוטומטי כל 2 שניות
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  showReview(currentIndex);
+}, 2000);
+
+// טיפול בטופס
 function handleFormSubmit(event){
   event.preventDefault();
   const data = new FormData(event.target);
