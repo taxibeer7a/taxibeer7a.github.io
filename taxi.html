@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VipTaxi באר שבע - שירות מוניות מקצועי</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #FFD700 0%, transparent 20%);
+            opacity: 0.1;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .company-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .company-info .subtitle {
+            font-size: 1.2rem;
+            color: #FFD700;
+            font-weight: 500;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-call {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .btn-call:hover {
+            background: #FFC000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20B358;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23FFD700" opacity="0.1"/><circle cx="80" cy="80" r="2" fill="%23FFD700" opacity="0.1"/><circle cx="60" cy="30" r="1.5" fill="%23000" opacity="0.05"/></svg>');
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .hero .highlight {
+            color: #FFD700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #555;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #FFD700;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Cities Section */
+        .cities {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .city-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .city-card:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .city-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .reviews-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 30px;
+        }
+
+        .review-card {
+            min-width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #FFD700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .review-info h5 {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: #FFD700;
+            color: #000;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: #FFC000;
+            transform: scale(1.1);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Heebo', Arial, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .review-card {
+                min-width: 280px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-placeholder">🚕</div>
+                    <div class="company-info">
+                        <h1>VipTaxi</h1>
+                        <div class="subtitle">באר שבע ולכל חלקי הארץ</div>
+                    </div>
+                </div>
+                <div class="contact-buttons">
+                    <a href="tel:0545515868" class="btn btn-call">
+                        📞 התקשר עכשיו
+                    </a>
+                    <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">
+                        💬 וואטסאפ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>שירות <span class="highlight">מוניות מקצועי</span> ואמין</h2>
+                <p>זמינים 24/7 לשירותכם המקצועי ביותר באזור הדרום. נסיעות בטוחות ונוחות עם נהגים מנוסים ורכבים מתוחזקים</p>
+                <div class="contact-buttons">
+                    <a href="tel:0545515868" class="btn btn-call">הזמן מונית עכשיו</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">השירותים שלנו</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚕</div>
+                    <h3>מוניות רגילות</h3>
+                    <p>שירות מוניות סטנדרטי מהיר ואמין לכל יעד באזור</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚐</div>
+                    <h3>מוניות גדולות</h3>
+                    <p>רכבים מרווחים לקבוצות ומשפחות עם מקום למזוודות</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✈️</div>
+                    <h3>הסעות לשדה תעופה</h3>
+                    <p>שירות מקצועי ודייקן להסעות לשדה התעופה בן גוריון</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌙</div>
+                    <h3>שירות 24/7</h3>
+                    <p>זמינים מסביב לשעון, כל ימות השבוע כולל שבתות וחגים</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section class="cities">
+        <div class="container">
+            <h2 class="section-title">אזורי השירות שלנו</h2>
+            <div class="cities-grid">
+                <div class="city-card">
+                    <h4>באר שבע</h4>
+                </div>
+                <div class="city-card">
+                    <h4>אופקים</h4>
+                </div>
+                <div class="city-card">
+                    <h4>נתיבות</h4>
+                </div>
+                <div class="city-card">
+                    <h4>שדרות</h4>
+                </div>
+                <div class="city-card">
+                    <h4>אשקלון</h4>
+                </div>
+                <div class="city-card">
+                    <h4>ירוחם</h4>
+                </div>
+                <div class="city-card">
+                    <h4>ערד</h4>
+                </div>
+                <div class="city-card">
+                    <h4>דימונה</h4>
+                </div>
+                <div class="city-card">
+                    <h4>מצפה רמון</h4>
+                </div>
+                <div class="city-card">
+                    <h4>מיתר</h4>
+                </div>
+                <div class="city-card">
+                    <h4>עומר</h4>
+                </div>
+                <div class="city-card">
+                    <h4>להבים</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+            <div class="reviews-container">
+                <div class="reviews-slider" id="reviewsSlider">
+                    <!-- Reviews will be generated by JavaScript -->
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="slideReviews('prev')">→</button>
+                    <button class="slider-btn" onclick="slideReviews('next')">←</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">צור קשר</h2>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">שם מלא</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">טלפון</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="pickup">נקודת איסוף</label>
+                    <input type="text" id="pickup" name="pickup" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">יעד</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">הודעה נוספת</label>
+                    <textarea id="message" name="message" placeholder="פרטים נוספים על הנסיעה..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">שלח פנייה</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">VipTaxi באר שבע</div>
+                <div class="footer-contact">
+                    <span>📞 054-551-5868</span>
+                    <span>💬 זמינים בווצאפ</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reviews data
+        const reviews = [
+            { name: "דוד כהן", text: "שירות מעולה ומקצועי! הנהג הגיע בזמן ונסיעה נעימה", rating: 5 },
+            { name: "רחל לוי", text: "ממליצה בחום! שירות אמין וטוב. הזמנתי מונית מהר באר שבע לתל אביב", rating: 5 },
+            { name: "משה אברהם", text: "נהגים נחמדים ורכב נקי. השירות הכי טוב באזור", rating: 5 },
+            { name: "שרה בן דוד", text: "שירות 24/7 מעולה! הזמנתי מונית באמצע הלילה והגיעה תוך דקות", rating: 5 },
+            { name: "יוסי מזרחי", text: "מחירים הוגנים ושירות מקצועי. נסעתי עם המשפחה לשדה התעופה", rating: 5 },
+            { name: "מירי גולן", text: "תמיד בזמן! הנהגים מנוסים ונוהגים בזהירות", rating: 5 },
+            { name: "אברהם שמיר", text: "הזמנתי מונית לאשקלון. נסיעה נוחה ומהירה", rating: 5 },
+            { name: "יעל מור", text: "שירות למופת! רכבים נוחים ונהגים אדיבים", rating: 5 },
+            { name: "חיים רוזן", text: "הכי מקצועיים באר שבע! ממליץ לכולם", rating: 5 },
+            { name: "דינה אשכנזי", text: "תמיד מזמינה אצלם. שירות אמין ומהיר", rating: 5 },
+            { name: "מוטי בן עמי", text: "נסעתי לירוחם בשעות הלילה. שירות מצוין!", rating: 5 },
+            { name: "טל סולומון", text: "מונית נקייה ונהג מקצועי. חוויה נעימה", rating: 5 },
+            { name: "עמוס טובה", text: "השירות הכי טוב שקיבלתי! זמינים תמיד", rating: 5 },
+            { name: "רינה פרידמן", text: "נסעתי עם חבריי לאירוע באופקים. שירות מעולה!", rating: 5 },
+            { name: "גדי נחום", text: "מחירים טובים ושירות מהיר. ממליץ בחוזקה", rating: 5 },
+            { name: "לאה ברק", text: "הנהגים נחמדים וידעו בדיוק את הדרך", rating: 5 },
+            { name: "רן פלג", text: "השירות הכי מקצועי באזור הדרום", rating: 5 },
+            { name: "נועה שקד", text: "הזמנתי מונית לשדרות. הגיעו בזמן וברכב נוח", rating: 5 },
+            { name: "איתן גבריאל", text: "שירות אמין ומהיר. תמיד מזמין אצלם", rating: 5 },
+            { name: "מעיין דהן", text: "נסיעה נעימה לנתיבות. נהג מקצועי ואדיב", rating: 5 },
+            { name: "אורי ברוך", text: "שירות מעולה! רכבים נוחים ונהגים מנוסים", rating: 5 },
+            { name: "שלומית רון", text: "הזמנתי מונית לדימונה. חוויה מצוינת!", rating: 5 },
+            { name: "בני הרץ", text: "השירות הכי מקצועי שניסיתי באר שבע", rating: 5 },
+            { name: "רבקה אדרי", text: "נהגים אמינים ושירות 24/7 אמיתי", rating: 5 },
+            { name: "דני כץ", text: "נסעתי לערד בשעת חירום. הגיעו מיד!", rating: 5 },
+            { name: "סוזן מנשה", text: "שירות מהיר ואמין. ממליצה לכולם", rating: 5 },
+            { name: "עודד שני", text: "מחירים הוגנים ושירות מעולה", rating: 5 },
+            { name: "ציפי רמון", text: "נסיעה נוחה ובטוחה למצפה רמון", rating: 5 },
+            { name: "יגאל דורון", text: "הנהגים הכי מקצועיים שפגשתי", rating: 5 },
+            { name: "שרית נגר", text: "שירות למופת! תמיד מזמינה אצלם", rating: 5 },
+            { name: "אסף מלכה", text: "נסיעה מהירה ונעימה לעומר", rating: 5 },
+            { name: "חנה יצחק", text: "שירות אמין ומהיר. חוויה מצוינת", rating: 5 },
+            { name: "פבל רוזנברג", text: "הכי מקצועיים באזור! שירות ברמה גבוהה", rating: 5 },
+            { name: "מרים כהנא", text: "נסעתי ללהבים. נהג נחמד ורכב נוח", rating: 5 },
+            { name: "זאב גרוס", text: "שירות מעולה! זמינים בכל שעה", rating: 5 },
+            { name: "עינת מוריה", text: "השירות הכי טוב שקיבלתי! ממליצה בחום", rating: 5 },
+            { name: "אלי שלום", text: "נהגים מקצועיים ושירות אמין. מעולה!", rating: 5 }
+        ];
+
+        let currentSlide = 0;
+        const reviewsPerSlide = 3;
+
+        function generateReviews() {
+            const slider = document.getElementById('reviewsSlider');
+            reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-avatar">${review.name.charAt(0)}</div>
+                        <div class="review-info">
+                            <h5>${review.name}</h5>
+                            <div class="stars">${'★'.repeat(review.rating)}</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"${review.text}"</p>
+                `;
+                slider.appendChild(reviewCard);
+            });
+        }
+
+        function slideReviews(direction) {
+            const slider = document.getElementById('reviewsSlider');
+            const totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
+            
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+            
+            const translateX = -(currentSlide * (100 / reviewsPerSlide));
+            slider.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Create WhatsApp message
+            const message = `היי! אני מעוניין להזמין מונית:
+            
+שם: ${data.name}
+טלפון: ${data.phone}
+מקום איסוף: ${data.pickup}
+יעד: ${data.destination}
+${data.message ? 'פרטים נוספים:
