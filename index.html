@@ -12,10 +12,10 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 /* Header */
 .header {background:#000;padding:20px 0;position:relative;overflow:hidden;text-align:center;}
-.logo-placeholder img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 10px;}
+.logo-placeholder img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto;}
 .company-info h1 {font-size:2.5rem;font-weight:700;margin-bottom:5px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
 .company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;margin-bottom:15px;}
-.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:10px;}
+.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;}
 .btn {padding:15px 25px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 .btn-call {background:#FFA500;color:#000;}
 .btn-call:hover {background:#FFC000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.4);}
@@ -37,13 +37,12 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
 
-/* Cities Section */
+/* Cities (List with toggle) */
 .cities {padding:80px 0;background:#111;color:#FFA500;}
-.city-card {background:rgba(255,165,0,0.1);padding:15px;border-radius:10px;text-align:right;transition:all 0.3s ease;border:1px solid rgba(255,165,0,0.2);cursor:pointer;margin-bottom:10px;}
-.city-card:hover {background:rgba(255,165,0,0.2);}
-.city-content {max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 10px;}
-.city-card.active .city-content {max-height:200px;margin-top:10px;}
-.city-card h4 {font-size:1.3rem;font-weight:600;color:#FFA500;}
+.cities-list {text-align:center;line-height:2.5rem;}
+.city-item {cursor:pointer;color:#FFA500;font-weight:600;transition:all 0.3s ease;margin:0 5px;}
+.city-item:hover {color:#FFC000;}
+#cityContent {margin-top:20px;color:#fff;font-size:1.1rem;text-align:center;}
 
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
@@ -85,106 +84,108 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <!-- Header -->
 <header class="header">
-  <div class="container">
-    <div class="logo-placeholder">
-      <img src="logo.png" alt="לוגו מוניות העיר באר שבע">
-    </div>
-    <div class="company-info">
-      <h1>מוניות העיר באר שבע</h1>
-      <div class="subtitle">בכל חלקי הארץ</div>
-    </div>
-    <div class="contact-buttons">
-      <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
-      <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
-    </div>
+  <div class="logo-placeholder">
+    <img src="logo.png" alt="לוגו מוניות העיר באר שבע">
+  </div>
+  <div class="company-info">
+    <h1>מוניות העיר באר שבע</h1>
+    <div class="subtitle">בכל חלקי הארץ</div>
+  </div>
+  <div class="contact-buttons">
+    <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
+    <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
   </div>
 </header>
 
 <!-- Hero Section -->
 <section class="hero">
-<div class="container">
-<h2>שירות <span class="highlight">מוניות מקצועי</span> ואמין</h2>
-<p>זמינים 24/7 לשירותכם המקצועי ביותר באזור הדרום. נסיעות בטוחות ונוחות עם נהגים מנוסים ורכבים מתוחזקים</p>
-<a href="tel:0545515868" class="btn btn-call">הזמן מונית עכשיו</a>
-</div>
+  <div class="container">
+    <h2>שירות <span class="highlight">מוניות מקצועי</span> ואמין</h2>
+    <p>זמינים 24/7 לשירותכם המקצועי ביותר באזור הדרום. נסיעות בטוחות ונוחות עם נהגים מנוסים ורכבים מתוחזקים</p>
+    <a href="tel:0545515868" class="btn btn-call">הזמן מונית עכשיו</a>
+  </div>
 </section>
 
 <!-- Services Section -->
 <section class="services">
-<div class="container">
-<h2 class="section-title">השירותים שלנו</h2>
-<div class="services-grid">
-<div class="service-card"><div class="service-icon">🚕</div><h3>מוניות רגילות</h3><p>שירות מוניות סטנדרטי מהיר ואמין לכל יעד באזור</p></div>
-<div class="service-card"><div class="service-icon">🚐</div><h3>מוניות גדולות</h3><p>רכבים מרווחים לקבוצות ומשפחות עם מקום למזוודות</p></div>
-<div class="service-card"><div class="service-icon">✈️</div><h3>הסעות לשדה תעופה</h3><p>שירות מקצועי ודייקן להסעות לשדה התעופה בן גוריון</p></div>
-<div class="service-card"><div class="service-icon">🌙</div><h3>שירות 24/7</h3><p>זמינים מסביב לשעון, כל ימות השבוע כולל שבתות וחגים</p></div>
-</div>
-</div>
+  <div class="container">
+    <h2 class="section-title">השירותים שלנו</h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🚕</div><h3>מוניות רגילות</h3><p>שירות מוניות סטנדרטי מהיר ואמין לכל יעד באזור</p></div>
+      <div class="service-card"><div class="service-icon">🚐</div><h3>מוניות גדולות</h3><p>רכבים מרווחים לקבוצות ומשפחות עם מקום למזוודות</p></div>
+      <div class="service-card"><div class="service-icon">✈️</div><h3>הסעות לשדה תעופה</h3><p>שירות מקצועי ודייקן להסעות לשדה התעופה בן גוריון</p></div>
+      <div class="service-card"><div class="service-icon">🌙</div><h3>שירות 24/7</h3><p>זמינים מסביב לשעון, כל ימות השבוע כולל שבתות וחגים</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- Cities Section (Full List) -->
+<!-- Cities Section (List with toggle details) -->
 <section class="cities">
-<div class="container">
-<h2 class="section-title">אזורי השירות שלנו</h2>
-<div class="city-card"><h4>באר שבע</h4><div class="city-content">שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.</div></div>
-<div class="city-card"><h4>אופקים</h4><div class="city-content">הסעות ונגישות לכל רחבי אופקים.</div></div>
-<div class="city-card"><h4>נתיבות</h4><div class="city-content">הגעה מהירה לכל חלקי נתיבות והסביבה.</div></div>
-<div class="city-card"><h4>שדרות</h4><div class="city-content">שירות אמין בכל העיר שדרות והסביבה.</div></div>
-<div class="city-card"><h4>אשקלון</h4><div class="city-content">נסיעות לכל רחבי אשקלון והסביבה.</div></div>
-<div class="city-card"><h4>ירוחם</h4><div class="city-content">הסעות מקצועיות לירוחם והסביבה.</div></div>
-<div class="city-card"><h4>ערד</h4><div class="city-content">שירות אמין לכל חלקי ערד והסביבה.</div></div>
-<div class="city-card"><h4>דימונה</h4><div class="city-content">נסיעות מכל דימונה והסביבה במהירות ובבטיחות.</div></div>
-<div class="city-card"><h4>מצפה רמון</h4><div class="city-content">שירותי מוניות למצפה רמון והסביבה.</div></div>
-<div class="city-card"><h4>מיתר</h4><div class="city-content">נסיעות אמינות לכל מיתר והסביבה.</div></div>
-<div class="city-card"><h4>עומר</h4><div class="city-content">הגעה מהירה ונוחה לעומר והסביבה.</div></div>
-<div class="city-card"><h4>להבים</h4><div class="city-content">שירות מקצועי לאזור להבים והסביבה.</div></div>
-</div>
+  <div class="container">
+    <h2 class="section-title">אזורי השירות שלנו</h2>
+    <div class="cities-list">
+      <span class="city-item" data-content="שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.">באר שבע</span> ●
+      <span class="city-item" data-content="הסעות ונגישות לכל רחבי אופקים.">אופקים</span> ●
+      <span class="city-item" data-content="הגעה מהירה לכל חלקי נתיבות והסביבה.">נתיבות</span> ●
+      <span class="city-item" data-content="שירות אמין בכל העיר שדרות והסביבה.">שדרות</span> ●
+      <span class="city-item" data-content="נסיעות לכל רחבי אשקלון והסביבה.">אשקלון</span> ●
+      <span class="city-item" data-content="הסעות מקצועיות לירוחם והסביבה.">ירוחם</span> ●
+      <span class="city-item" data-content="שירות אמין לכל חלקי ערד והסביבה.">ערד</span> ●
+      <span class="city-item" data-content="נסיעות מכל דימונה והסביבה במהירות ובבטיחות.">דימונה</span> ●
+      <span class="city-item" data-content="שירותי מוניות למצפה רמון והסביבה.">מצפה רמון</span> ●
+      <span class="city-item" data-content="נסיעות אמינות לכל מיתר והסביבה.">מיתר</span> ●
+      <span class="city-item" data-content="הגעה מהירה ונוחה לעומר והסביבה.">עומר</span> ●
+      <span class="city-item" data-content="שירות מקצועי לאזור להבים והסביבה.">להבים</span>
+    </div>
+    <div id="cityContent"></div>
+  </div>
 </section>
 
 <!-- Reviews Section -->
 <section class="reviews">
-<div class="container">
-<h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
-<div class="reviews-container">
-<div class="reviews-slider" id="reviewsSlider"></div>
-<div class="slider-controls">
-<button class="slider-btn" onclick="slideReviews('prev')">←</button>
-<button class="slider-btn" onclick="slideReviews('next')">→</button>
-</div>
-</div>
-</div>
+  <div class="container">
+    <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+    <div class="reviews-container">
+      <div class="reviews-slider" id="reviewsSlider"></div>
+      <div class="slider-controls">
+        <button class="slider-btn" onclick="slideReviews('prev')">←</button>
+        <button class="slider-btn" onclick="slideReviews('next')">→</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Contact Section -->
 <section class="contact">
-<div class="container">
-<h2 class="section-title">צור קשר</h2>
-<form class="contact-form" onsubmit="handleFormSubmit(event)">
-<div class="form-group"><label for="name">שם מלא</label><input type="text" id="name" name="name" required></div>
-<div class="form-group"><label for="phone">טלפון</label><input type="tel" id="phone" name="phone" required></div>
-<div class="form-group"><label for="pickup">נקודת איסוף</label><input type="text" id="pickup" name="pickup" required></div>
-<div class="form-group"><label for="destination">יעד</label><input type="text" id="destination" name="destination" required></div>
-<div class="form-group"><label for="message">הודעה נוספת</label><textarea id="message" name="message" placeholder="פרטים נוספים על הנסיעה..."></textarea></div>
-<button type="submit" class="submit-btn">שלח פנייה</button>
-</form>
-</div>
+  <div class="container">
+    <h2 class="section-title">צור קשר</h2>
+    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+      <div class="form-group"><label for="name">שם מלא</label><input type="text" id="name" name="name" required></div>
+      <div class="form-group"><label for="phone">טלפון</label><input type="tel" id="phone" name="phone" required></div>
+      <div class="form-group"><label for="pickup">נקודת איסוף</label><input type="text" id="pickup" name="pickup" required></div>
+      <div class="form-group"><label for="destination">יעד</label><input type="text" id="destination" name="destination" required></div>
+      <div class="form-group"><label for="message">הודעה נוספת</label><textarea id="message" name="message" placeholder="פרטים נוספים על הנסיעה..."></textarea></div>
+      <button type="submit" class="submit-btn">שלח פנייה</button>
+    </form>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-<div class="container">
-<div class="footer-logo">מוניות העיר באר שבע</div>
-<div class="footer-contact">
-📞 054-551-5868 | 💬 זמינים בווצאפ
-</div>
-</div>
+  <div class="container">
+    <div class="footer-logo">מוניות העיר באר שבע</div>
+    <div class="footer-contact">📞 054-551-5868 | 💬 זמינים בווצאפ</div>
+  </div>
 </footer>
 
 <script>
-// Cities Accordion
-document.querySelectorAll('.city-card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('active');
+// Cities toggle
+const cityItems = document.querySelectorAll('.city-item');
+const cityContent = document.getElementById('cityContent');
+cityItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const content = item.getAttribute('data-content');
+    cityContent.innerHTML = (cityContent.innerHTML === content) ? '' : content;
   });
 });
 
@@ -195,31 +196,21 @@ const reviews = [
   {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
   {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
 ];
-
 const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
-
 function showReview(index){
   const r = reviews[index];
   reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
 }
-
 function slideReviews(direction){
   if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
   else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
   showReview(currentIndex);
 }
-
-// הצגת הביקורת הראשונה
 showReview(currentIndex);
+setInterval(() => {currentIndex = (currentIndex + 1) % reviews.length; showReview(currentIndex);}, 2000);
 
-// סקרול אוטומטי כל 2 שניות
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showReview(currentIndex);
-}, 2000);
-
-// טיפול בטופס
+// Contact form
 function handleFormSubmit(event){
   event.preventDefault();
   const data = new FormData(event.target);
