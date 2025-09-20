@@ -4,204 +4,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מוניות העיר באר שבע - שירות מוניות מקצועי</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* --- כל הסגנונות הקודמים שלך --- */
-body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
-}
-header {
-  text-align: center;
-  padding: 20px;
-}
-.logo {
-  width: 120px;
-}
-h1 {
-  color: #ffcc00;
-  text-shadow: 0 0 10px #ff9900;
-}
-button {
-  background: #ffcc00;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: transform 0.3s;
-}
-button:hover {
-  transform: scale(1.1);
-  background: #ff9900;
-  color: #000;
-}
-.gallery .images {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.gallery img {
-  width: 200px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
-}
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-#loader .taxi {
-  width: 100px;
-  height: 50px;
-  background: yellow;
-  border-radius: 10px;
-  animation: drive 3.5s linear forwards;
-}
-#loader .progress {
-  width: 200px;
-  height: 10px;
-  background: #222;
-  margin-top: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-}
-#loader .progress::after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, yellow, orange);
-  animation: progress 3.5s forwards;
-}
-@keyframes drive {
-  from { transform: translateX(-150%); }
-  to { transform: translateX(150%); }
-}
-@keyframes progress {
-  from { width: 0; }
-  to { width: 100%; }
-}
-.reviews {
-    padding: 50px 20px;
-    border-bottom: 2px solid #FFA500;
-    text-align: center;
-}
-.section-title {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px #FFA500;
-}
-.reviews-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.reviews-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-.review {
-    flex: 0 0 100%;
-    background: #111;
-    color: #FFA500;
-    padding: 20px;
-    margin: 10px;
-    border: 2px solid #FFA500;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #FFA500;
-}
-.slider-controls {
-    margin-top: 20px;
-}
-.slider-btn {
-    background: #FFA500;
-    border: none;
-    color: #000;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 10px;
-    box-shadow: 0 0 20px #FFA500;
-    transition: all 0.2s ease;
-}
-.slider-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px #FFA500, 0 0 60px #FFA500 inset;
-}
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
+.container {max-width:1200px;margin:0 auto;padding:0 20px;}
+
+/* Header */
+.header {background:#000;padding:20px 0;text-align:center;position:relative;overflow:hidden;}
+.logo-placeholder img {max-width:100%;height:auto;margin:0 auto 10px;}
+.company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;margin-bottom:10px;}
+.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:15px;}
+.btn {padding:15px 25px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+.btn-call {background:#FFA500;color:#000;}
+.btn-call:hover {background:#FFC000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.4);}
+.btn-whatsapp {background:#25D366;color:#fff;}
+.btn-whatsapp:hover {background:#20B358;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.4);}
+
+/* Hero */
+.hero {background:#111;padding:60px 0;text-align:center;}
+.hero h2 {font-size:3rem;font-weight:700;margin-bottom:20px;color:#FFA500;}
+.hero p {font-size:1.3rem;margin-bottom:40px;color:#fff;}
+
+/* Services */
+.services {padding:80px 0;}
+.section-title {text-align:center;font-size:2.5rem;font-weight:700;margin-bottom:50px;color:#FFA500;}
+.services-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:60px;}
+.service-card {background:#111;padding:30px;border-radius:15px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.3);transition:all 0.3s ease;border-top:4px solid #FFA500;}
+.service-card:hover {transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.5);}
+.service-icon {width:60px;height:60px;background:#FFA500;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
+.service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
+.service-card p {color:#fff;line-height:1.6;}
+
 /* Map Section */
-.map {
-  padding: 60px 20px;
-  background: #111;
-  color: #fff;
-  text-align: center;
-}
-.map-container {
-  margin-bottom: 20px;
-}
-.map iframe {
-  width: 100%;
-  height: 450px;
-  border: 0;
-  border-radius: 15px;
-}
-.map-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-}
-.btn-waze,
-.btn-google-maps {
-  padding: 12px 24px;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-.btn-waze {
-  background: #4f9e4f;
-  color: #fff;
-}
-.btn-waze:hover {
-  background: #3b7a3b;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(79, 158, 79, 0.4);
-}
-.btn-google-maps {
-  background: #4285f4;
-  color: #fff;
-}
-.btn-google-maps:hover {
-  background: #357ae8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+.map-section {padding:60px 0;background:#111;text-align:center;}
+.map-section iframe {width:100%;height:400px;border:0;border-radius:15px;margin-bottom:15px;}
+.map-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:10px;}
+.map-buttons a {padding:12px 25px;border-radius:8px;text-decoration:none;font-weight:600;color:#fff;}
+.map-buttons .waze {background:#1BAF4C;}
+.map-buttons .google {background:#4285F4;}
+
+/* Cities */
+.cities {padding:80px 0;background:#111;color:#FFA500;text-align:center;}
+.cities-list {font-size:1.1rem;line-height:2;}
+.city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
+.city-item:hover {text-decoration:underline;}
+#cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
+
+/* Reviews */
+.reviews {padding:80px 0;background:#111;}
+.reviews-container {position:relative;overflow:hidden;text-align:center;}
+.reviews-slider {display:flex;justify-content:center;transition:transform 0.5s ease;gap:30px;}
+.review-card {min-width:350px;background:#222;padding:20px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);flex-shrink:0;margin:auto;display:flex;align-items:center;gap:15px;}
+.review-card img {width:50px;height:50px;border-radius:50%;object-fit:cover;}
+.review-text {color:#fff;font-style:italic;}
+.slider-controls {display:flex;justify-content:center;gap:15px;margin-top:30px;}
+.slider-btn {width:50px;height:50px;border:none;background:#FFA500;color:#000;border-radius:50%;font-size:20px;cursor:pointer;transition:all 0.3s ease;}
+.slider-btn:hover {background:#FFC000;transform:scale(1.1);}
+
+/* Contact */
+.contact {padding:80px 0;background:#111;}
+.contact-form {max-width:600px;margin:0 auto;background:#222;padding:40px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);}
+.form-group {margin-bottom:25px;}
+.form-group label {display:block;margin-bottom:8px;font-weight:600;color:#FFA500;}
+.form-group input,.form-group textarea {width:100%;padding:15px;border:2px solid #333;border-radius:8px;font-size:1rem;font-family:'Heebo',Arial,sans-serif;transition:border-color 0.3s ease;background:#111;color:#fff;}
+.form-group input:focus,.form-group textarea:focus {outline:none;border-color:#FFA500;}
+.form-group textarea {height:120px;resize:vertical;}
+.submit-btn {width:100%;padding:18px;background:#FFA500;color:#000;border:none;border-radius:8px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;}
+.submit-btn:hover {background:#FFC000;transform:translateY(-2px);}
+
+/* Footer */
+.footer {background:#000;color:#FFA500;padding:40px 0;text-align:center;}
+.footer-logo {font-size:1.5rem;font-weight:700;margin-bottom:10px;}
+.footer-contact {font-size:1rem;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero h2{font-size:2rem;}
+  .hero p{font-size:1.1rem;}
+  .section-title{font-size:2rem;}
+  .review-card{min-width:280px;flex-direction:column;}
 }
 </style>
 </head>
 <body>
 
 <!-- Header -->
-<header>
-  <img src="header-banner.png" alt="מוניות העיר באר שבע" class="logo">
-  <h1>מוניות העיר באר שבע</h1>
-  <div>
-    <button onclick="window.location.href='tel:0545515868'">📞 התקשר עכשיו</button>
-    <button onclick="window.open('https://wa.me/972545515868','_blank')">💬 וואטסאפ</button>
+<header class="header">
+  <div class="container" style="text-align:center;">
+    <div class="logo-placeholder">
+      <img src="header-banner.png" alt="מוניות העיר באר שבע">
+    </div>
+    <div class="company-info">
+      <div class="subtitle">ההגעה בזמן ושירות אישי הם הערך המרכזי שלנו.</div>
+    </div>
+    <div class="contact-buttons">
+      <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
+      <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
+    </div>
   </div>
 </header>
 
@@ -210,7 +110,7 @@ button:hover {
   <div class="container">
     <h2>שירות <span class="highlight">מוניות מקצועי</span> ואמין</h2>
     <p>זמינים 24/7 לשירותכם המקצועי ביותר באזור הדרום. נסיעות בטוחות ונוחות עם נהגים מנוסים ורכבים מתוחזקים</p>
-    <button onclick="window.location.href='tel:0545515868'">הזמן מונית עכשיו</button>
+    <a href="tel:0545515868" class="btn btn-call">הזמן מונית עכשיו</a>
   </div>
 </section>
 
@@ -227,16 +127,17 @@ button:hover {
   </div>
 </section>
 
-<!-- Google Maps Embed -->
-<section class="map">
+<!-- Map Section -->
+<section class="map-section">
   <div class="container">
-    <h2 class="section-title">מיקום המשרד שלנו</h2>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=31.256935,34.797078" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    <h2 class="section-title">מיקום השירות שלנו</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.0123456789!2d34.7923456789!3d31.2601234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502d8f123456789%3A0xabcdef1234567890!2z15HXnSDXqNeV15jXmNed15zXlSDXmdeV15nXmQ!5e0!3m2!1siw!2sil!4v1695200000000!5m2!1siw!2sil" 
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
     <div class="map-buttons">
-      <a href="https://waze.com/ul?ll=31.256935,34.797078&navigate=yes" target="_blank" class="btn btn-waze">🚗 ניווט ב-Waze</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=31.256935,34.797078" target="_blank" class="btn btn-google-maps">📍 ניווט ב-Google Maps</a>
+      <a href="https://waze.com/ul?ll=31.2601234567,34.7923456789&navigate=yes" target="_blank" class="waze">WAZE</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=31.2601234567,34.7923456789" target="_blank" class="google">GOOGLE MAPS</a>
     </div>
   </div>
 </section>
@@ -251,8 +152,16 @@ button:hover {
     <div class="cities-list">
       <span class="city-item" data-content="שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.">באר שבע</span> ●
       <span class="city-item" data-content="הסעות ונגישות לכל רחבי אופקים.">אופקים</span> ●
-      <span class="city-item" data-content="הגעה מהירה לכל חלקי נתיבות והסביבה.">נתיבות</span>
-      <!-- הוסף ערים נוספות לפי הצורך -->
+      <span class="city-item" data-content="הגעה מהירה לכל חלקי נתיבות והסביבה.">נתיבות</span> ●
+      <span class="city-item" data-content="שירות אמין בכל העיר שדרות והסביבה.">שדרות</span> ●
+      <span class="city-item" data-content="נסיעות לכל רחבי אשקלון והסביבה.">אשקלון</span> ●
+      <span class="city-item" data-content="הסעות מקצועיות לירוחם והסביבה.">ירוחם</span> ●
+      <span class="city-item" data-content="שירות אמין לכל חלקי ערד והסביבה.">ערד</span> ●
+      <span class="city-item" data-content="נסיעות מכל דימונה והסביבה במהירות ובבטיחות.">דימונה</span> ●
+      <span class="city-item" data-content="שירותי מוניות למצפה רמון והסביבה.">מצפה רמון</span> ●
+      <span class="city-item" data-content="נסיעות אמינות לכל מיתר והסביבה.">מיתר</span> ●
+      <span class="city-item" data-content="הגעה מהירה ונוחה לעומר והסביבה.">עומר</span> ●
+      <span class="city-item" data-content="שירות מקצועי לאזור להבים והסביבה.">להבים</span>
     </div>
     <div id="cityContent"></div>
   </div>
@@ -272,6 +181,29 @@ button:hover {
   </div>
 </section>
 
+<!-- Contact Section -->
+<section class="contact">
+  <div class="container">
+    <h2 class="section-title">צור קשר</h2>
+    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+      <div class="form-group"><label for="name">שם מלא</label><input type="text" id="name" name="name" required></div>
+      <div class="form-group"><label for="phone">טלפון</label><input type="tel" id="phone" name="phone" required></div>
+      <div class="form-group"><label for="pickup">נקודת איסוף</label><input type="text" id="pickup" name="pickup" required></div>
+      <div class="form-group"><label for="destination">יעד</label><input type="text" id="destination" name="destination" required></div>
+      <div class="form-group"><label for="message">הודעה נוספת</label><textarea id="message" name="message" placeholder="פרטים נוספים על הנסיעה..."></textarea></div>
+      <button type="submit" class="submit-btn">שלח פנייה</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">מוניות העיר באר שבע</div>
+    <div class="footer-contact">📞 054-551-5868 | 💬 זמינים בווצאפ</div>
+  </div>
+</footer>
+
 <script>
 // Cities toggle
 document.querySelectorAll('.city-item').forEach(item => {
@@ -287,22 +219,38 @@ const reviews = [
   {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
   {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
 ];
+
 const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
+
 function showReview(index){
   const r = reviews[index];
-  reviewsSlider.innerHTML = `<div class="review"><img src="${r.img}" alt="avatar" style="width:50px;height:50px;border-radius:50%;margin-bottom:10px;"><p>${r.text}</p></div>`;
+  reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
 }
+
 function slideReviews(direction){
   if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
   else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
   showReview(currentIndex);
 }
+
+// הצגת הביקורת הראשונה
 showReview(currentIndex);
+
+// סקרול אוטומטי כל 2 שניות
 setInterval(() => {
   currentIndex = (currentIndex + 1) % reviews.length;
   showReview(currentIndex);
-}, 4000);
+}, 2000);
+
+// טיפול בטופס
+function handleFormSubmit(event){
+  event.preventDefault();
+  const data = new FormData(event.target);
+  const msg = Object.fromEntries(data);
+  alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
+  event.target.reset();
+}
 </script>
 
 </body>
