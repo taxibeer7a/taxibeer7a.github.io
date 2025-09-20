@@ -196,45 +196,62 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 
 <script>
-// Reviews data
+<!-- Reviews Section -->
+<section class="reviews">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+    <div class="reviews-container" style="display:inline-block; max-width:600px;">
+      <div class="reviews-slider" id="reviewsSlider"></div>
+    </div>
+  </div>
+</section>
+
+<script>
 const reviews = [
-"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.",
-"נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.",
-"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.",
-"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.",
-"כל נסיעה עם המוניות האלה נעימה ובטוחה. – רונן ד.",
-"נהגים מנוסים, זמינים תמיד ומקצועיים. – נועה ש.",
-"מומלץ מאוד לכל מי שצריך מונית בבאר שבע. – אבי ר.",
-"הזמנתי מונית לנתב\"ג, השירות היה מושלם. – יעל מ.",
-"רכב נקי, נהג אדיב ושירות מהיר. – תומר ג.",
-"שירות אישי, זמינות 24/7 ומחיר הוגן. – שרית ל.",
-"מוניות נקיות, נהגים אדיבים והגעה בזמן. – אלון פ.",
-"שירות מדהים, תמיד מגיעים בזמן. – דנה ר.",
-"הזמנתי עם המוניות כמה פעמים – אין תלונות! – ליאור ס.",
-"נהג מקצועי, אדיב ושירות מהיר. – עינת ב.",
-"חוויה מושלמת, נהגים נעימים ומקצועיים. – רועי כ."
+  "שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.",
+  "נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.",
+  "‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.",
+  "שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.",
+  "כל נסיעה עם המוניות האלה נעימה ובטוחה. – רונן ד.",
+  "נהגים מנוסים, זמינים תמיד ומקצועיים. – נועה ש.",
+  "מומלץ מאוד לכל מי שצריך מונית בבאר שבע. – אבי ר.",
+  "הזמנתי מונית לנתב\"ג, השירות היה מושלם. – יעל מ.",
+  "רכב נקי, נהג אדיב ושירות מהיר. – תומר ג.",
+  "שירות אישי, זמינות 24/7 ומחיר הוגן. – שרית ל.",
+  "מוניות נקיות, נהגים אדיבים והגעה בזמן. – אלון פ.",
+  "שירות מדהים, תמיד מגיעים בזמן. – דנה ר.",
+  "הזמנתי עם המוניות כמה פעמים – אין תלונות! – ליאור ס.",
+  "נהג מקצועי, אדיב ושירות מהיר. – עינת ב.",
+  "חוויה מושלמת, נהגים נעימים ומקצועיים. – רועי כ."
 ];
 
 const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
+
 function showReview(index){
-reviewsSlider.innerHTML=`<div class="review-card">${reviews[index]}</div>`;
+  reviewsSlider.innerHTML = `<div class="review-card" style="margin:auto;">${reviews[index]}</div>`;
 }
-function slideReviews(direction){
-if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
-else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
-showReview(currentIndex);
-}
+
+// הצגת הביקורת הראשונה
 showReview(currentIndex);
 
+// סקרול אוטומטי כל 4 שניות
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  showReview(currentIndex);
+}, 4000);
+
+// טיפול בטופס
 function handleFormSubmit(event){
-event.preventDefault();
-const data=new FormData(event.target);
-const msg=Object.fromEntries(data);
-alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
-event.target.reset();
+  event.preventDefault();
+  const data = new FormData(event.target);
+  const msg = Object.fromEntries(data);
+  alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
+  event.target.reset();
 }
 </script>
+
 </body>
 </html>
+
 
