@@ -83,3 +83,58 @@ button:hover {
   from { width: 0; }
   to { width: 100%; }
 }
+.reviews {
+    padding: 50px 20px;
+    border-bottom: 2px solid #FFA500;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #FFA500;
+}
+
+.reviews-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.reviews-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.review {
+    flex: 0 0 100%;
+    background: #111;
+    color: #FFA500;
+    padding: 20px;
+    margin: 10px;
+    border: 2px solid #FFA500;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FFA500;
+}
+
+.slider-controls {
+    margin-top: 20px;
+}
+
+.slider-btn {
+    background: #FFA500;
+    border: none;
+    color: #000;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    box-shadow: 0 0 20px #FFA500;
+    transition: all 0.2s ease;
+}
+
+.slider-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #FFA500, 0 0 60px #FFA500 inset;
+}
