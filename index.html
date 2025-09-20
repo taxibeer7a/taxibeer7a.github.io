@@ -9,6 +9,7 @@
 * {margin:0;padding:0;box-sizing:border-box;}
 body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
+
 /* Header */
 .header {background:#000;padding:20px 0;position:relative;overflow:hidden;}
 .header-content {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
@@ -22,10 +23,12 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .btn-call:hover {background:#FFC000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.4);}
 .btn-whatsapp {background:#25D366;color:#fff;}
 .btn-whatsapp:hover {background:#20B358;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.4);}
+
 /* Hero */
 .hero {background:#111;padding:60px 0;text-align:center;}
 .hero h2 {font-size:3rem;font-weight:700;margin-bottom:20px;color:#FFA500;}
 .hero p {font-size:1.3rem;margin-bottom:40px;color:#fff;}
+
 /* Services */
 .services {padding:80px 0;}
 .section-title {text-align:center;font-size:2.5rem;font-weight:700;margin-bottom:50px;color:#FFA500;}
@@ -35,25 +38,23 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .service-icon {width:60px;height:60px;background:#FFA500;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
+
 /* Cities */
 .cities {padding:80px 0;background:#111;color:#FFA500;}
 .cities-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
 .city-card {background:rgba(255,165,0,0.1);padding:25px;border-radius:10px;text-align:center;transition:all 0.3s ease;border:1px solid rgba(255,165,0,0.2);}
 .city-card:hover {background:rgba(255,165,0,0.2);transform:translateY(-5px);}
 .city-card h4 {font-size:1.3rem;font-weight:600;color:#FFA500;}
+
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
-.reviews-container {position:relative;overflow:hidden;}
-.reviews-slider {display:flex;transition:transform 0.5s ease;gap:30px;}
-.review-card {min-width:350px;background:#222;padding:30px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);flex-shrink:0;}
-.review-header {display:flex;align-items:center;gap:15px;margin-bottom:15px;}
-.review-avatar {width:50px;height:50px;border-radius:50%;background:#FFA500;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#000;}
-.review-info h5 {font-weight:600;color:#FFA500;}
-.stars {color:#FFA500;font-size:1.2rem;}
-.review-text {color:#fff;font-style:italic;}
+.reviews-container {position:relative;overflow:hidden;text-align:center;}
+.reviews-slider {display:flex;justify-content:center;transition:transform 0.5s ease;gap:30px;}
+.review-card {min-width:350px;background:#222;padding:30px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);flex-shrink:0;margin:auto;}
 .slider-controls {display:flex;justify-content:center;gap:15px;margin-top:30px;}
 .slider-btn {width:50px;height:50px;border:none;background:#FFA500;color:#000;border-radius:50%;font-size:20px;cursor:pointer;transition:all 0.3s ease;}
 .slider-btn:hover {background:#FFC000;transform:scale(1.1);}
+
 /* Contact */
 .contact {padding:80px 0;background:#111;}
 .contact-form {max-width:600px;margin:0 auto;background:#222;padding:40px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);}
@@ -64,12 +65,20 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .form-group textarea {height:120px;resize:vertical;}
 .submit-btn {width:100%;padding:18px;background:#FFA500;color:#000;border:none;border-radius:8px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;}
 .submit-btn:hover {background:#FFC000;transform:translateY(-2px);}
+
 /* Footer */
 .footer {background:#000;color:#FFA500;padding:40px 0;text-align:center;}
-.footer-logo {font-size:1.5rem;font-weight:700;}
-.footer-contact {display:flex;gap:20px;flex-wrap:wrap;}
+.footer-logo {font-size:1.5rem;font-weight:700;margin-bottom:10px;}
+.footer-contact {font-size:1rem;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+
 /* Responsive */
-@media(max-width:768px){.header-content{flex-direction:column;text-align:center;}.hero h2{font-size:2rem;}.hero p{font-size:1.1rem;}.section-title{font-size:2rem;}.review-card{min-width:280px;}.footer-content{flex-direction:column;}}
+@media(max-width:768px){
+  .header-content{flex-direction:column;text-align:center;}
+  .hero h2{font-size:2rem;}
+  .hero p{font-size:1.1rem;}
+  .section-title{font-size:2rem;}
+  .review-card{min-width:280px;}
+}
 </style>
 </head>
 <body>
@@ -175,38 +184,8 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </footer>
 
-<style>
-.footer {
-    background: #000;
-    color: #FFA500;
-    padding: 40px 0;
-    text-align: center; /* מרכז את התוכן */
-}
-
-.footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.footer-contact {
-    font-size: 1rem;
-}
-</style>
-
-
 <script>
-<!-- Reviews Section -->
-<section class="reviews">
-  <div class="container" style="text-align:center;">
-    <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
-    <div class="reviews-container" style="display:inline-block; max-width:600px;">
-      <div class="reviews-slider" id="reviewsSlider"></div>
-    </div>
-  </div>
-</section>
-
-<script>
+// Reviews
 const reviews = [
   "שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.",
   "נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.",
@@ -229,7 +208,13 @@ const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
 
 function showReview(index){
-  reviewsSlider.innerHTML = `<div class="review-card" style="margin:auto;">${reviews[index]}</div>`;
+  reviewsSlider.innerHTML = `<div class="review-card">${reviews[index]}</div>`;
+}
+
+function slideReviews(direction){
+  if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
+  else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
+  showReview(currentIndex);
 }
 
 // הצגת הביקורת הראשונה
@@ -253,5 +238,3 @@ function handleFormSubmit(event){
 
 </body>
 </html>
-
-
