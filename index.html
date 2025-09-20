@@ -12,48 +12,36 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 /* Banner Header */
 .banner-header {
-  width: 425px;        
-  height: 150px;       
+  width: 425px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   text-align: center;
-  margin: 20px auto 40px; 
+  margin: 20px auto 40px;
 }
 
 .banner-header h1 {
   font-family: 'Heebo', Arial, sans-serif;
-  font-size: 3rem;
-  font-weight: 900;      
-  color: #FFA500; /* כתום */
-  position: relative;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #FFA500; /* כתום עיקרי */
+  text-shadow:
+    0 0 2px #ffffff,
+    0 0 4px #ffffff;
+  animation: subtleGlow 2s infinite alternate;
 }
 
-/* הבזקים לבנים */
-.banner-header h1::before,
-.banner-header h1::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 40%;
-  transform: translate(-50%, -50%) rotate(25deg);
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-  opacity: 0;
-  animation: flash 2s infinite;
-}
-
-.banner-header h1::after {
-  transform: translate(-50%, -50%) rotate(-25deg);
-  animation-delay: 1s;
-}
-
-/* אנימציה של הבזק */
-@keyframes flash {
-  0%, 80%, 100% { opacity: 0; }
-  40% { opacity: 1; }
+@keyframes subtleGlow {
+  0% {
+    text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff;
+  }
+  50% {
+    text-shadow: 0 0 2px #ffffff, 0 0 4px #ffffff;
+  }
+  100% {
+    text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff;
+  }
 }
 
 /* Hero */
@@ -101,9 +89,10 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .submit-btn:hover {background:#FFC000;transform:translateY(-2px);}
 
 /* Footer */
-.footer {background:#000;color:#FFA500;padding:40px 0;text-align:center;}
-.footer-logo {font-size:1.5rem;font-weight:700;margin-bottom:10px;}
-.footer-contact {font-size:1rem;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.footer {background:#000;color:#FFA500;padding:40px 0;text-align:center;display:flex;justify-content:center;align-items:center;gap:10px;}
+.footer-logo {font-size:1.5rem;font-weight:700;}
+.footer-contact {font-size:1rem;}
+.footer-separator {margin:0 10px;color:#FFA500;}
 
 /* Responsive */
 @media(max-width:768px){
@@ -198,11 +187,9 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-contact-left">💬 זמינים בווצאפ</div>
-    <div class="footer-divider">|</div>
-    <div class="footer-contact-right">📞 054-551-5868</div>
-  </div>
+  <div class="footer-contact">💬 זמינים בווצאפ</div>
+  <div class="footer-separator">|</div>
+  <div class="footer-logo">📞 054-551-5868</div>
 </footer>
 
 <script>
@@ -253,4 +240,3 @@ function handleFormSubmit(event){
 
 </body>
 </html>
-
