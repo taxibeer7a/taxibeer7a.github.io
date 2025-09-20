@@ -11,14 +11,15 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
 /* Banner Header */
+<style>
 .banner-header {
   width: 425px;
-  height: 50px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 20px auto 40px;
+  margin: 20px auto;
 }
 
 .banner-header h1 {
@@ -26,21 +27,28 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   font-size: 2.5rem;
   font-weight: 900;
   color: #FFA500; /* כתום עיקרי */
-  text-shadow:
-    0 0 2px #ffffff,
-    0 0 4px #ffffff;
-  animation: subtleGlow 2s infinite alternate;
+  text-shadow: 
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px #fff,
+    0 0 8px #FFA500;
+  animation: sunRays 2s infinite;
+  opacity: 1;
 }
+</style>
 
-@keyframes subtleGlow {
+@keyframes sunRays {
   0% {
-    text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff;
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #FFA500;
+    opacity: 0.6;
   }
   50% {
-    text-shadow: 0 0 2px #ffffff, 0 0 4px #ffffff;
+    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #FFA500;
+    opacity: 1;
   }
   100% {
-    text-shadow: 0 0 1px #ffffff, 0 0 2px #ffffff;
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #FFA500;
+    opacity: 0.6;
   }
 }
 
@@ -240,4 +248,5 @@ function handleFormSubmit(event){
 
 </body>
 </html>
+
 
