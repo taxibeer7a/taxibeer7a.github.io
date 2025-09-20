@@ -11,13 +11,11 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
 /* Header */
-.header {background:#000;padding:20px 0;position:relative;overflow:hidden;}
-.header-content {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-.logo-section {display:flex;align-items:center;gap:15px;}
-.logo-placeholder img {width:80px;height:80px;border-radius:50%;object-fit:cover;}
+.header {background:#000;padding:20px 0;position:relative;overflow:hidden;text-align:center;}
+.logo-placeholder img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 10px;}
 .company-info h1 {font-size:2.5rem;font-weight:700;margin-bottom:5px;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
-.company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;}
-.contact-buttons {display:flex;gap:15px;flex-wrap:wrap;}
+.company-info .subtitle {font-size:1.2rem;color:#FFA500;font-weight:500;margin-bottom:15px;}
+.contact-buttons {display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:10px;}
 .btn {padding:15px 25px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 .btn-call {background:#FFA500;color:#000;}
 .btn-call:hover {background:#FFC000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,165,0,0.4);}
@@ -39,7 +37,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
 
-/* Cities (Accordion) */
+/* Cities Section */
 .cities {padding:80px 0;background:#111;color:#FFA500;}
 .city-card {background:rgba(255,165,0,0.1);padding:15px;border-radius:10px;text-align:right;transition:all 0.3s ease;border:1px solid rgba(255,165,0,0.2);cursor:pointer;margin-bottom:10px;}
 .city-card:hover {background:rgba(255,165,0,0.2);}
@@ -76,7 +74,6 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 /* Responsive */
 @media(max-width:768px){
-  .header-content{flex-direction:column;text-align:center;}
   .hero h2{font-size:2rem;}
   .hero p{font-size:1.1rem;}
   .section-title{font-size:2rem;}
@@ -88,23 +85,19 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 
 <!-- Header -->
 <header class="header">
-<div class="container">
-<div class="header-content">
-<div class="logo-section">
-<div class="logo-placeholder">
-<img src="logo.png" alt="לוגו מוניות העיר באר שבע">
-</div>
-<div class="company-info">
-<h1>מוניות העיר באר שבע</h1>
-<div class="subtitle">בכל חלקי הארץ</div>
-</div>
-</div>
-<div class="contact-buttons">
-<a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
-<a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="logo-placeholder">
+      <img src="logo.png" alt="לוגו מוניות העיר באר שבע">
+    </div>
+    <div class="company-info">
+      <h1>מוניות העיר באר שבע</h1>
+      <div class="subtitle">בכל חלקי הארץ</div>
+    </div>
+    <div class="contact-buttons">
+      <a href="tel:0545515868" class="btn btn-call">📞 התקשר עכשיו</a>
+      <a href="https://wa.me/972545515868" class="btn btn-whatsapp" target="_blank">💬 וואטסאפ</a>
+    </div>
+  </div>
 </header>
 
 <!-- Hero Section -->
@@ -129,27 +122,22 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 </div>
 </section>
 
-<!-- Cities Section (Accordion) -->
+<!-- Cities Section (Full List) -->
 <section class="cities">
 <div class="container">
 <h2 class="section-title">אזורי השירות שלנו</h2>
-<div class="city-card">
-<h4>באר שבע</h4>
-<div class="city-content">שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.</div>
-</div>
-<div class="city-card">
-<h4>אופקים</h4>
-<div class="city-content">הסעות ונגישות לכל רחבי אופקים.</div>
-</div>
-<div class="city-card">
-<h4>נתיבות</h4>
-<div class="city-content">הגעה מהירה לכל חלקי נתיבות והסביבה.</div>
-</div>
-<div class="city-card">
-<h4>שדרות</h4>
-<div class="city-content">שירות אמין בכל העיר שדרות והסביבה.</div>
-</div>
-<!-- ניתן להוסיף עוד כרטיסים כפי שצריך -->
+<div class="city-card"><h4>באר שבע</h4><div class="city-content">שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.</div></div>
+<div class="city-card"><h4>אופקים</h4><div class="city-content">הסעות ונגישות לכל רחבי אופקים.</div></div>
+<div class="city-card"><h4>נתיבות</h4><div class="city-content">הגעה מהירה לכל חלקי נתיבות והסביבה.</div></div>
+<div class="city-card"><h4>שדרות</h4><div class="city-content">שירות אמין בכל העיר שדרות והסביבה.</div></div>
+<div class="city-card"><h4>אשקלון</h4><div class="city-content">נסיעות לכל רחבי אשקלון והסביבה.</div></div>
+<div class="city-card"><h4>ירוחם</h4><div class="city-content">הסעות מקצועיות לירוחם והסביבה.</div></div>
+<div class="city-card"><h4>ערד</h4><div class="city-content">שירות אמין לכל חלקי ערד והסביבה.</div></div>
+<div class="city-card"><h4>דימונה</h4><div class="city-content">נסיעות מכל דימונה והסביבה במהירות ובבטיחות.</div></div>
+<div class="city-card"><h4>מצפה רמון</h4><div class="city-content">שירותי מוניות למצפה רמון והסביבה.</div></div>
+<div class="city-card"><h4>מיתר</h4><div class="city-content">נסיעות אמינות לכל מיתר והסביבה.</div></div>
+<div class="city-card"><h4>עומר</h4><div class="city-content">הגעה מהירה ונוחה לעומר והסביבה.</div></div>
+<div class="city-card"><h4>להבים</h4><div class="city-content">שירות מקצועי לאזור להבים והסביבה.</div></div>
 </div>
 </section>
 
