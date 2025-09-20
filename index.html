@@ -108,4 +108,113 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 <h2 class="section-title">השירותים שלנו</h2>
 <div class="services-grid">
 <div class="service-card"><div class="service-icon">🚕</div><h3>מוניות רגילות</h3><p>שירות מוניות סטנדרטי מהיר ואמין לכל יעד באזור</p></div>
-<div class="service-card"><div class="service-icon">🚐</div><h3>מוניות גדולות</h3><
+<div class="service-card"><div class="service-icon">🚐</div><h3>מוניות גדולות</h3><p>רכבים מרווחים לקבוצות ומשפחות עם מקום למזוודות</p></div>
+<div class="service-card"><div class="service-icon">✈️</div><h3>הסעות לשדה תעופה</h3><p>שירות מקצועי ודייקן להסעות לשדה התעופה בן גוריון</p></div>
+<div class="service-card"><div class="service-icon">🌙</div><h3>שירות 24/7</h3><p>זמינים מסביב לשעון, כל ימות השבוע כולל שבתות וחגים</p></div>
+</div>
+</div>
+</section>
+
+<!-- Cities Section -->
+<section class="cities">
+<div class="container">
+<h2 class="section-title">אזורי השירות שלנו</h2>
+<div class="cities-grid">
+<div class="city-card"><h4>באר שבע</h4></div>
+<div class="city-card"><h4>אופקים</h4></div>
+<div class="city-card"><h4>נתיבות</h4></div>
+<div class="city-card"><h4>שדרות</h4></div>
+<div class="city-card"><h4>אשקלון</h4></div>
+<div class="city-card"><h4>ירוחם</h4></div>
+<div class="city-card"><h4>ערד</h4></div>
+<div class="city-card"><h4>דימונה</h4></div>
+<div class="city-card"><h4>מצפה רמון</h4></div>
+<div class="city-card"><h4>מיתר</h4></div>
+<div class="city-card"><h4>עומר</h4></div>
+<div class="city-card"><h4>להבים</h4></div>
+</div>
+</div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews">
+<div class="container">
+<h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+<div class="reviews-container">
+<div class="reviews-slider" id="reviewsSlider"></div>
+<div class="slider-controls">
+<button class="slider-btn" onclick="slideReviews('prev')">←</button>
+<button class="slider-btn" onclick="slideReviews('next')">→</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact">
+<div class="container">
+<h2 class="section-title">צור קשר</h2>
+<form class="contact-form" onsubmit="handleFormSubmit(event)">
+<div class="form-group"><label for="name">שם מלא</label><input type="text" id="name" name="name" required></div>
+<div class="form-group"><label for="phone">טלפון</label><input type="tel" id="phone" name="phone" required></div>
+<div class="form-group"><label for="pickup">נקודת איסוף</label><input type="text" id="pickup" name="pickup" required></div>
+<div class="form-group"><label for="destination">יעד</label><input type="text" id="destination" name="destination" required></div>
+<div class="form-group"><label for="message">הודעה נוספת</label><textarea id="message" name="message" placeholder="פרטים נוספים על הנסיעה..."></textarea></div>
+<button type="submit" class="submit-btn">שלח פנייה</button>
+</form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-logo">VipTaxi באר שבע</div>
+<div class="footer-contact">
+<span>📞 054-551-5868</span>
+<span>💬 זמינים בווצאפ</span>
+</div>
+</div>
+</footer>
+
+<script>
+// Reviews data
+const reviews = [
+"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.",
+"נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.",
+"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.",
+"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.",
+"כל נסיעה עם המוניות האלה נעימה ובטוחה. – רונן ד.",
+"נהגים מנוסים, זמינים תמיד ומקצועיים. – נועה ש.",
+"מומלץ מאוד לכל מי שצריך מונית בבאר שבע. – אבי ר.",
+"הזמנתי מונית לנתב\"ג, השירות היה מושלם. – יעל מ.",
+"רכב נקי, נהג אדיב ושירות מהיר. – תומר ג.",
+"שירות אישי, זמינות 24/7 ומחיר הוגן. – שרית ל.",
+"מוניות נקיות, נהגים אדיבים והגעה בזמן. – אלון פ.",
+"שירות מדהים, תמיד מגיעים בזמן. – דנה ר.",
+"הזמנתי עם המוניות כמה פעמים – אין תלונות! – ליאור ס.",
+"נהג מקצועי, אדיב ושירות מהיר. – עינת ב.",
+"חוויה מושלמת, נהגים נעימים ומקצועיים. – רועי כ."
+];
+
+const reviewsSlider = document.getElementById("reviewsSlider");
+let currentIndex = 0;
+function showReview(index){
+reviewsSlider.innerHTML=`<div class="review-card">${reviews[index]}</div>`;
+}
+function slideReviews(direction){
+if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
+else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
+showReview(currentIndex);
+}
+showReview(currentIndex);
+
+function handleFormSubmit(event){
+event.preventDefault();
+const data=new FormData(event.target);
+const msg=Object.fromEntries(data);
+alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
+event.target.reset();
+}
+</script>
+</body>
+</html>
