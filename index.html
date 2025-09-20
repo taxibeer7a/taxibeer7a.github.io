@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מוניות העיר באר שבע</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- אנימציית טעינה -->
+  <div id="loader">
+    <div class="taxi"></div>
+    <p>טוען מערכת מוניות רובוטית…</p>
+    <div class="progress"></div>
+  </div>
+
+  <!-- תוכן הדף -->
+  <header>
+    <img src="assets/logo.png" alt="לוגו מוניות העיר באר שבע" class="logo">
+    <h1>נעים. מהיר. מקצועי.</h1>
+  </header>
+
+  <main>
+    <section class="about">
+      <h2>שירותי המוניות שלנו</h2>
+      <p>שירותי מוניות 24/7 באזור באר שבע, הנגב והדרום. הזמנה מהירה, נהגים מקצועיים וצוות ותיק לשירותך.</p>
+      <button onclick="window.location.href='https://wa.me/972545515868'">הזמן מונית</button>
+    </section>
+
+    <section class="gallery">
+      <h2>גלריה</h2>
+      <div class="images">
+        <img src="assets/taxi1.jpg" alt="מונית בבאר שבע">
+        <img src="assets/taxi2.jpg" alt="נסיעה לנתב"ג">
+        <img src="assets/city.jpg" alt="עיר באר שבע">
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>צור קשר</h2>
+      <form>
+        <input type="text" placeholder="שם מלא" required>
+        <input type="tel" placeholder="טלפון" required>
+        <textarea placeholder="פרטים נוספים"></textarea>
+        <button type="submit">שלח</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 מוניות העיר באר שבע</p>
+  </footer>
+</body>
+</html>
