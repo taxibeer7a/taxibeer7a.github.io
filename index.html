@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -8,46 +8,25 @@
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
 body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
+
+/* Container */
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
-/* Banner Header עם אפקט קרני שמש */
+/* Banner Header */
 .banner-header {
-  width: 425px;
-  height: 50px;
+  width: 100%;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin: 20px auto 40px;
+  margin-bottom:40px;
 }
-
 .banner-header h1 {
   font-family: 'Heebo', Arial, sans-serif;
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 900;
-  color: #FFA500; /* כתום עיקרי */
-  text-shadow: 
-    0 0 2px #fff,
-    0 0 4px #fff,
-    0 0 6px #fff,
-    0 0 8px #FFA500;
-  animation: sunRays 2s infinite;
-  opacity: 1;
-}
-
-@keyframes sunRays {
-  0% {
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #FFA500;
-    opacity: 0.6;
-  }
-  50% {
-    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #FFA500;
-    opacity: 1;
-  }
-  100% {
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #FFA500;
-    opacity: 0.6;
-  }
+  color: #FFA500;
+  text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;
 }
 
 /* Hero */
@@ -71,6 +50,82 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
 .city-item:hover {text-decoration:underline;}
 #cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
+
+/* Gallery */
+.gallery {
+  padding: 40px 20px;
+  text-align: center;
+}
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #FFA500;
+  font-weight: 900;
+}
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.gallery-container img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255,165,0,0.7);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+.gallery-container img:hover { transform: scale(1.05); }
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.9);
+}
+.lightbox-img {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,165,0,0.8);
+}
+.close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 20px;
+  margin-top: -50px;
+  color: #FFA500;
+  font-weight: bold;
+  font-size: 40px;
+  user-select: none;
+  transition: 0.3s;
+}
+.prev:hover, .next:hover { color: #fff; }
+.prev { left: 0; }
+.next { right: 0; }
 
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
@@ -106,10 +161,11 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   .hero p{font-size:1.1rem;}
   .section-title{font-size:2rem;}
   .review-card{min-width:280px;flex-direction:column;}
+  .gallery-container img {height:120px;}
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" oncopy="return false" oncut="return false">
 
 <!-- Banner Header -->
 <header class="banner-header">
@@ -162,6 +218,30 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
+<!-- Gallery Section -->
+<section class="gallery">
+  <h2>קטלוג תמונות</h2>
+  <div class="gallery-container">
+    <img src="images/taxi1.jpg" alt="מונית 1" onclick="openLightbox(0)">
+    <img src="images/taxi2.jpg" alt="מונית 2" onclick="openLightbox(1)">
+    <img src="images/taxi3.jpg" alt="מונית 3" onclick="openLightbox(2)">
+    <img src="images/taxi4.jpg" alt="מונית 4" onclick="openLightbox(3)">
+    <img src="images/taxi5.jpg" alt="מונית 5" onclick="openLightbox(4)">
+    <img src="images/taxi6.jpg" alt="מונית 6" onclick="openLightbox(5)">
+    <img src="images/taxi7.jpg" alt="מונית 7" onclick="openLightbox(6)">
+    <img src="images/taxi8.jpg" alt="מונית 8" onclick="openLightbox(7)">
+    <img src="images/taxi9.jpg" alt="מונית 9" onclick="openLightbox(8)">
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img class="lightbox-img" id="lightbox-img" src="">
+  <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+  <a class="next" onclick="changeImage(1)">&#10095;</a>
+</div>
+
 <!-- Reviews Section -->
 <section class="reviews">
   <div class="container">
@@ -199,12 +279,35 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 </footer>
 
 <script>
+// מניעת העתקה
+document.addEventListener('keydown', function(e) {
+  if(e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'u')) e.preventDefault();
+});
+
 // Cities toggle
 document.querySelectorAll('.city-item').forEach(item => {
   item.addEventListener('click', () => {
     document.getElementById('cityContent').innerText = item.dataset.content;
   });
 });
+
+// Gallery Lightbox
+let currentIndex = 0;
+const images = [
+  "images/taxi1.jpg","images/taxi2.jpg","images/taxi3.jpg",
+  "images/taxi4.jpg","images/taxi5.jpg","images/taxi6.jpg",
+  "images/taxi7.jpg","images/taxi8.jpg","images/taxi9.jpg"
+];
+function openLightbox(index) {
+  currentIndex = index;
+  document.getElementById("lightbox").style.display = "block";
+  document.getElementById("lightbox-img").src = images[currentIndex];
+}
+function closeLightbox() { document.getElementById("lightbox").style.display = "none"; }
+function changeImage(n) {
+  currentIndex = (currentIndex + n + images.length) % images.length;
+  document.getElementById("lightbox-img").src = images[currentIndex];
+}
 
 // Reviews
 const reviews = [
@@ -213,37 +316,23 @@ const reviews = [
   {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
   {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
 ];
-
 const reviewsSlider = document.getElementById("reviewsSlider");
-let currentIndex = 0;
-
-function showReview(index){
-  const r = reviews[index];
-  reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
+let reviewIndex = 0;
+function showReview() {
+  reviewsSlider.innerHTML = `
+    <div class="review-card">
+      <img src="${reviews[reviewIndex].img}" alt="לקוח">
+      <p class="review-text">${reviews[reviewIndex].text}</p>
+    </div>`;
 }
-
-function slideReviews(direction){
-  if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
-  else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
-  showReview(currentIndex);
+function slideReviews(dir) {
+  reviewIndex = dir==='next' ? (reviewIndex+1)%reviews.length : (reviewIndex-1+reviews.length)%reviews.length;
+  showReview();
 }
+showReview();
 
-showReview(currentIndex);
-
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showReview(currentIndex);
-}, 2000);
-
-function handleFormSubmit(event){
-  event.preventDefault();
-  const data = new FormData(event.target);
-  const msg = Object.fromEntries(data);
-  alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
-  event.target.reset();
-}
+// Contact
+function handleFormSubmit(e){e.preventDefault();alert("תודה! הפנייה נשלחה.");}
 </script>
-
 </body>
 </html>
-
