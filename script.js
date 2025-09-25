@@ -50,15 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- Lightbox קטלוג תמונות ----------
   const images = [
-    "images/taxi1.jpg",
-    "images/taxi2.jpg",
-    "images/taxi3.jpg",
-    "images/taxi4.jpg",
-    "images/taxi5.jpg",
-    "images/taxi6.jpg",
-    "images/taxi7.jpg",
-    "images/taxi8.jpg",
-    "images/taxi9.jpg"
+    "taxi1.jpg",
+    "taxi2.jpg",
+    "taxi3.jpg",
+    "taxi4.jpg",
+    "taxi5.jpg",
+    "taxi6.jpg",
+    "taxi7.jpg",
+    "taxi8.jpg",
+    "taxi9.jpg"
   ];
 
   let currentLightboxIndex = 0;
