@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
-/* Banner Header */
+/* Banner Header עם כיתוב כתום והילה לבנה */
 .banner-header {
   width: 800px;
   height: 200px;
@@ -18,13 +18,26 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 20px auto;
+  margin: 20px auto 40px;
+  background: transparent;
 }
+
 .banner-header h1 {
   font-family: 'Heebo', Arial, sans-serif;
   font-size: 4rem;
   font-weight: 900;
-  color: #FFA500;
+  color: #FFA500; /* כתום */
+  text-shadow: 
+    0 0 6px #ffffff,
+    0 0 12px #ffffff,
+    0 0 18px rgba(255,255,255,0.6);
+  animation: sunGlow 3s infinite alternate;
+}
+
+@keyframes sunGlow {
+  0% { text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px rgba(255,255,255,0.6); }
+  50% { text-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff, 0 0 30px rgba(255,255,255,0.8); }
+  100% { text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px rgba(255,255,255,0.6); }
 }
 
 /* Hero */
@@ -52,8 +65,13 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
 .reviews-container {position:relative;overflow:hidden;text-align:center;}
-#reviewsSlider {min-height:60px;margin-bottom:30px;}
-.review {font-size:1.2rem;color:#fff;}
+.reviews-slider {display:flex;justify-content:center;transition:transform 0.5s ease;gap:30px;}
+.review-card {min-width:350px;background:#222;padding:20px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);flex-shrink:0;margin:auto;display:flex;align-items:center;gap:15px;}
+.review-card img {width:50px;height:50px;border-radius:50%;object-fit:cover;}
+.review-text {color:#fff;font-style:italic;}
+.slider-controls {display:flex;justify-content:center;gap:15px;margin-top:30px;}
+.slider-btn {width:50px;height:50px;border:none;background:#FFA500;color:#000;border-radius:50%;font-size:20px;cursor:pointer;transition:all 0.3s ease;}
+.slider-btn:hover {background:#FFC000;transform:scale(1.1);}
 
 /* Contact */
 .contact {padding:80px 0;background:#111;}
@@ -72,65 +90,22 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .footer-contact {font-size:1rem;}
 .footer-separator {margin:0 10px;color:#FFA500;}
 
-/* Gallery */
-.gallery {padding:40px 20px;text-align:center;}
-.gallery h2 {font-size:2rem;margin-bottom:20px;color:#FFA500;font-weight:900;}
-.gallery-container {display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
-.gallery-container img {width:100%;height:150px;object-fit:cover;border-radius:12px;box-shadow:0 0 15px rgba(255,165,0,0.7);cursor:pointer;transition:transform 0.3s;}
-.gallery-container img:hover {transform:scale(1.05);}
-
-/* Lightbox משופר */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.95);
-  overflow: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 15px;
-  box-shadow: 0 0 25px rgba(255,165,0,0.8);
-  transition: transform 0.3s ease-in-out;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #fff;
-  font-size: 50px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.prev, .next {
-  cursor: pointer;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #FFA500;
-  font-size: 60px;
-  font-weight: bold;
-  padding: 10px;
-  user-select: none;
-  transition: color 0.3s;
-}
-.prev { left: 20px; }
-.next { right: 20px; }
-.prev:hover, .next:hover { color: #fff; }
-
 /* Responsive */
 @media(max-width:768px){
   .hero h2{font-size:2rem;}
   .hero p{font-size:1.1rem;}
   .section-title{font-size:2rem;}
   .review-card{min-width:280px;flex-direction:column;}
-  .gallery-container {grid-template-columns:repeat(2,1fr);}
+
+  /* Banner במובייל */
+  .banner-header{
+    width:90%;
+    height:120px; /* גובה קטן יותר למובייל */
+    margin: 10px auto 30px;
+  }
+  .banner-header h1{
+    font-size:2rem; /* טקסט קטן יותר למובייל */
+  }
 }
 </style>
 </head>
@@ -187,36 +162,12 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
-<!-- Gallery Section -->
-<section class="gallery">
-  <h2>קטלוג תמונות</h2>
-  <div class="gallery-container">
-    <img src="taxi1.jpg" alt="מונית 1" onclick="openLightbox(0)">
-    <img src="taxi2.jpg" alt="מונית 2" onclick="openLightbox(1)">
-    <img src="taxi3.jpg" alt="מונית 3" onclick="openLightbox(2)">
-    <img src="taxi4.jpg" alt="מונית 4" onclick="openLightbox(3)">
-    <img src="taxi5.jpg" alt="מונית 5" onclick="openLightbox(4)">
-    <img src="taxi6.jpg" alt="מונית 6" onclick="openLightbox(5)">
-    <img src="taxi7.jpg" alt="מונית 7" onclick="openLightbox(6)">
-    <img src="taxi8.jpg" alt="מונית 8" onclick="openLightbox(7)">
-    <img src="taxi9.jpg" alt="מונית 9" onclick="openLightbox(8)">
-  </div>
-</section>
-
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <img class="lightbox-img" id="lightbox-img" src="">
-  <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-  <a class="next" onclick="changeImage(1)">&#10095;</a>
-</div>
-
 <!-- Reviews Section -->
 <section class="reviews">
   <div class="container">
     <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
     <div class="reviews-container">
-      <div id="reviewsSlider"></div>
+      <div class="reviews-slider" id="reviewsSlider"></div>
       <div class="slider-controls">
         <button class="slider-btn" onclick="slideReviews('next')">→</button>
         <button class="slider-btn" onclick="slideReviews('prev')">←</button>
@@ -248,11 +199,6 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 </footer>
 
 <script>
-// Loader
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => { document.getElementById("loader")?.style.display = "none"; }, 3500);
-});
-
 // Cities toggle
 document.querySelectorAll('.city-item').forEach(item => {
   item.addEventListener('click', () => {
@@ -262,30 +208,33 @@ document.querySelectorAll('.city-item').forEach(item => {
 
 // Reviews
 const reviews = [
-  "שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.",
-  "נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.",
-  "הזמנתי בשעת לילה והכול היה מושלם. – דני פ.",
-  "שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.",
-  "כל נסיעה עם המוניות האלה נעימה ובטוחה. – רונן ד.",
-  "נהגים מנוסים, זמינים תמיד ומקצועיים. – נועה ש.",
-  "מומלץ מאוד לכל מי שצריך מונית בבאר שבע. – אבי ר.",
-  "הזמנתי מונית לנתב\"ג, השירות היה מושלם. – יעל מ.",
-  "רכב נקי, נהג אדיב ושירות מהיר. – תומר ג.",
-  "שירות אישי, זמינות 24/7 ומחיר הוגן. – שרית ל.",
-  "מוניות נקיות, נהגים אדיבים והגעה בזמן. – אלון פ.",
-  "שירות מדהים, תמיד מגיעים בזמן. – דנה ר.",
-  "הזמנתי עם המוניות כמה פעמים – אין תלונות! – ליאור ס.",
-  "נהג מקצועי, אדיב ושירות מהיר. – עינת ב.",
-  "חוויה מושלמת, נהגים נעימים ומקצועיים. – רועי כ."
+  {text:"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.", img:"avatar1.jpg"},
+  {text:"נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.", img:"avatar2.jpg"},
+  {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
+  {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
 ];
+
 const reviewsSlider = document.getElementById("reviewsSlider");
 let currentIndex = 0;
-function showReview(index){reviewsSlider.innerHTML=`<div class="review">${reviews[index]}</div>`;}
-function slideReviews(direction){if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}showReview(currentIndex);}
-showReview(currentIndex);
-setInterval(()=>{currentIndex=(currentIndex+1)%reviews.length;showReview(currentIndex);},3000);
 
-// Contact form
+function showReview(index){
+  const r = reviews[index];
+  reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
+}
+
+function slideReviews(direction){
+  if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
+  else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
+  showReview(currentIndex);
+}
+
+showReview(currentIndex);
+
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  showReview(currentIndex);
+}, 2000);
+
 function handleFormSubmit(event){
   event.preventDefault();
   const data = new FormData(event.target);
@@ -293,14 +242,7 @@ function handleFormSubmit(event){
   alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
   event.target.reset();
 }
+</script>
 
-// Lightbox
-const images = [
-  "taxi1.jpg","taxi2.jpg","taxi3.jpg",
-  "taxi4.jpg","taxi5.jpg","taxi6.jpg",
-  "taxi7.jpg","taxi8.jpg","taxi9.jpg"
-];
-let currentLightboxIndex = 0;
-function openLightbox(index){currentLightboxIndex=index;document.getElementById("lightbox").style.display="flex";document.getElementById("lightbox-img").src=images[currentLightboxIndex];}
-function closeLightbox(){document.getElementById("lightbox").style.display="none";}
-function changeImage(n){currentLightboxIndex=(currentLightboxIndex
+</body>
+</html>
