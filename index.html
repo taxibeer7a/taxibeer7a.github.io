@@ -7,12 +7,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
+body {
+  font-family:'Heebo', Arial, sans-serif;
+  line-height:1.6;
+  color:#fff;
+  background:#000;
+  direction:rtl;
+  text-align:right;
+  overflow-x:hidden;
+}
+
+/* פסי לד זוהר כתום בצידי הדף */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 2px; /* עובי הפס */
+  height: 100%;
+  background: linear-gradient(to bottom, #FFA500, #FF6600, #FFA500);
+  box-shadow: 0 0 20px #FFA500, 0 0 40px #FFA500 inset;
+  z-index: 9999;
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
-/* Banner Header */
-.banner-header {width:100%;padding:40px 20px;text-align:center;margin:0 auto 30px;}
-.banner-header h1 {font-size:3rem;font-weight:900;color:#FFA500;}
+/* Banner Header – טקסט כתום פשוט */
+.banner-header {
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  margin: 0 auto 30px;
+  background: transparent;
+}
+.banner-header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #FFA500;
+}
 
 /* Hero */
 .hero {background:#111;padding:60px 0;text-align:center;}
@@ -29,18 +64,32 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
 
-/* Service Areas */
-#service-areas {padding:60px 20px;background:#111;text-align:center;}
-#service-areas h2 {font-size:2.5rem;color:#FFA500;margin-bottom:20px;}
-#service-areas p {color:#fff;font-size:1.2rem;}
+/* Cities */
+.cities {padding:80px 0;background:#111;color:#FFA500;text-align:center;}
+.cities-list {font-size:1.1rem;line-height:2;}
+.city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
+.city-item:hover {text-decoration:underline;}
+#cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
 
 /* Carousel */
-.carousel {overflow:hidden;width:100%;background:#000;padding:20px 0;}
-.carousel-track {display:flex;animation:scroll 40s linear infinite;}
-.carousel img {width:250px;height:auto;flex-shrink:0;margin:0;padding:0;}
+.carousel {
+  overflow: hidden;
+  width: 100%;
+  background: #000;
+  padding: 20px 0;
+}
+.carousel-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+}
+.carousel img {
+  width: 250px;
+  height: auto;
+  flex-shrink: 0;
+}
 @keyframes scroll {
-  0% {transform:translateX(0);}
-  100% {transform:translateX(-100%);}
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Reviews */
@@ -78,7 +127,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   .section-title{font-size:2rem;}
   .review-card{min-width:280px;flex-direction:column;}
   .banner-header h1{font-size:2rem;}
-  .carousel img{width:180px;}
+  .carousel img{width:150px;}
 }
 </style>
 </head>
@@ -89,7 +138,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   <h1>מוניות העיר באר שבע</h1>
 </header>
 
-<!-- Hero -->
+<!-- Hero Section -->
 <section class="hero">
   <div class="container">
     <h2>שירות <span class="highlight">מוניות מקצועי</span> ואמין</h2>
@@ -97,7 +146,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
-<!-- Services -->
+<!-- Services Section -->
 <section class="services">
   <div class="container">
     <h2 class="section-title">השירותים שלנו</h2>
@@ -110,16 +159,31 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
-<!-- Service Areas -->
-<section id="service-areas">
-  <h2>אזורי השירות שלנו</h2>
-  <p>באר שבע, הנגב, הדרום, נתב"ג וכל רחבי הארץ</p>
+<!-- Cities Section -->
+<section class="cities">
+  <div class="container">
+    <h2 class="section-title">אזורי השירות שלנו</h2>
+    <div class="cities-list">
+      <span class="city-item" data-content="שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.">באר שבע</span> ●
+      <span class="city-item" data-content="הסעות ונגישות לכל רחבי אופקים.">אופקים</span> ●
+      <span class="city-item" data-content="הגעה מהירה לכל חלקי נתיבות והסביבה.">נתיבות</span> ●
+      <span class="city-item" data-content="שירות אמין בכל העיר שדרות והסביבה.">שדרות</span> ●
+      <span class="city-item" data-content="נסיעות לכל רחבי אשקלון והסביבה.">אשקלון</span> ●
+      <span class="city-item" data-content="הסעות מקצועיות לירוחם והסביבה.">ירוחם</span> ●
+      <span class="city-item" data-content="שירות אמין לכל חלקי ערד והסביבה.">ערד</span> ●
+      <span class="city-item" data-content="נסיעות מכל דימונה והסביבה במהירות ובבטיחות.">דימונה</span> ●
+      <span class="city-item" data-content="שירותי מוניות למצפה רמון והסביבה.">מצפה רמון</span> ●
+      <span class="city-item" data-content="נסיעות אמינות לכל מיתר והסביבה.">מיתר</span> ●
+      <span class="city-item" data-content="הגעה מהירה ונוחה לעומר והסביבה.">עומר</span> ●
+      <span class="city-item" data-content="שירות מקצועי לאזור להבים והסביבה.">להבים</span>
+    </div>
+    <div id="cityContent"></div>
+  </div>
 </section>
 
-<!-- Carousel -->
+<!-- Carousel Section -->
 <section class="carousel">
   <div class="carousel-track">
-    <!-- סט ראשון -->
     <img src="taxi1.jpg" alt="מונית 1">
     <img src="taxi2.jpg" alt="מונית 2">
     <img src="taxi3.jpg" alt="מונית 3">
@@ -129,7 +193,6 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
     <img src="taxi7.jpg" alt="מונית 7">
     <img src="taxi8.jpg" alt="מונית 8">
     <img src="taxi9.jpg" alt="מונית 9">
-    <!-- שכפול -->
     <img src="taxi1.jpg" alt="מונית 1">
     <img src="taxi2.jpg" alt="מונית 2">
     <img src="taxi3.jpg" alt="מונית 3">
@@ -142,7 +205,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
-<!-- Reviews -->
+<!-- Reviews Section -->
 <section class="reviews">
   <div class="container">
     <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
@@ -156,7 +219,7 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section class="contact">
   <div class="container">
     <h2 class="section-title">צור קשר</h2>
@@ -179,6 +242,13 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 </footer>
 
 <script>
+// Cities toggle
+document.querySelectorAll('.city-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.getElementById('cityContent').innerText = item.dataset.content;
+  });
+});
+
 // Reviews
 const reviews = [
   {text:"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.", img:"avatar1.jpg"},
@@ -198,10 +268,7 @@ function slideReviews(direction){
   showReview(currentIndex);
 }
 showReview(currentIndex);
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showReview(currentIndex);
-}, 4000);
+setInterval(() => { currentIndex = (currentIndex + 1) % reviews.length; showReview(currentIndex); }, 4000);
 
 function handleFormSubmit(event){
   event.preventDefault();
@@ -214,4 +281,3 @@ function handleFormSubmit(event){
 
 </body>
 </html>
-
