@@ -10,34 +10,18 @@
 body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;background:#000;direction:rtl;text-align:right;}
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
-/* Banner Header עם כיתוב כתום והילה לבנה */
+/* Banner Header – טקסט כתום פשוט */
 .banner-header {
-  width: 800px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  padding: 40px 20px;
   text-align: center;
-  margin: 20px auto 40px;
+  margin: 0 auto 30px;
   background: transparent;
 }
-
 .banner-header h1 {
-  font-family: 'Heebo', Arial, sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 900;
-  color: #FFA500; /* כתום */
-  text-shadow: 
-    0 0 6px #ffffff,
-    0 0 12px #ffffff,
-    0 0 18px rgba(255,255,255,0.6);
-  animation: sunGlow 3s infinite alternate;
-}
-
-@keyframes sunGlow {
-  0% { text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px rgba(255,255,255,0.6); }
-  50% { text-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff, 0 0 30px rgba(255,255,255,0.8); }
-  100% { text-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 18px rgba(255,255,255,0.6); }
+  color: #FFA500;
 }
 
 /* Hero */
@@ -61,6 +45,27 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 .city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
 .city-item:hover {text-decoration:underline;}
 #cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
+
+/* Image Slider */
+.gallery {
+  padding:60px 0;
+  background:#000;
+  overflow:hidden;
+}
+.gallery-track {
+  display:flex;
+  gap:20px;
+  animation: scrollGallery 30s linear infinite;
+}
+.gallery img {
+  height:200px;
+  border-radius:12px;
+  flex-shrink:0;
+}
+@keyframes scrollGallery {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
@@ -96,16 +101,8 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
   .hero p{font-size:1.1rem;}
   .section-title{font-size:2rem;}
   .review-card{min-width:280px;flex-direction:column;}
-
-  /* Banner במובייל */
-  .banner-header{
-    width:90%;
-    height:120px; /* גובה קטן יותר למובייל */
-    margin: 10px auto 30px;
-  }
-  .banner-header h1{
-    font-size:2rem; /* טקסט קטן יותר למובייל */
-  }
+  .banner-header h1{font-size:2rem;}
+  .gallery img{height:150px;}
 }
 </style>
 </head>
@@ -141,9 +138,6 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
 <section class="cities">
   <div class="container">
     <h2 class="section-title">אזורי השירות שלנו</h2>
-    <p style="font-size:0.9rem;color:#ccc;margin-bottom:15px;">
-      לחצו על העיר הרצויה כדי לראות את השירותים הניתנים באזור זה
-    </p>
     <div class="cities-list">
       <span class="city-item" data-content="שירות בכל העיר באר שבע כולל אזורים מרכזיים ושכונות.">באר שבע</span> ●
       <span class="city-item" data-content="הסעות ונגישות לכל רחבי אופקים.">אופקים</span> ●
@@ -159,6 +153,25 @@ body {font-family:'Heebo', Arial, sans-serif;line-height:1.6;color:#fff;backgrou
       <span class="city-item" data-content="שירות מקצועי לאזור להבים והסביבה.">להבים</span>
     </div>
     <div id="cityContent"></div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery">
+  <div class="gallery-track">
+    <img src="taxi1.jpg" alt="תמונה 1">
+    <img src="taxi2.jpg" alt="תמונה 2">
+    <img src="taxi3.jpg" alt="תמונה 3">
+    <img src="taxi4.jpg" alt="תמונה 4">
+    <img src="taxi5.jpg" alt="תמונה 5">
+    <img src="taxi6.jpg" alt="תמונה 6">
+    <img src="taxi7.jpg" alt="תמונה 7">
+    <img src="taxi8.jpg" alt="תמונה 8">
+    <img src="taxi9.jpg" alt="תמונה 9">
+    <!-- שכפול לגלילה רציפה -->
+    <img src="taxi1.jpg" alt="תמונה 1">
+    <img src="taxi2.jpg" alt="תמונה 2">
+    <img src="taxi3.jpg" alt="תמונה 3">
   </div>
 </section>
 
@@ -233,7 +246,7 @@ showReview(currentIndex);
 setInterval(() => {
   currentIndex = (currentIndex + 1) % reviews.length;
   showReview(currentIndex);
-}, 2000);
+}, 4000);
 
 function handleFormSubmit(event){
   event.preventDefault();
