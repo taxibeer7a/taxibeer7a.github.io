@@ -14,28 +14,28 @@ body {
   background:#000;
   direction:rtl;
   text-align:right;
-  overflow-x:hidden;
+  position: relative;
+  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-/* פסי לד זוהר כתום בצידי הדף */
-body::before,
-body::after {
-  content: "";
+/* פסי LED בצידי הדף */
+body::before, body::after {
+  content: '';
   position: fixed;
-  top: 0;
-  width: 2px; /* עובי הפס */
-  height: 100%;
-  background: linear-gradient(to bottom, #FFA500, #FF6600, #FFA500);
-  box-shadow: 0 0 20px #FFA500, 0 0 40px #FFA500 inset;
+  top:0;
+  bottom:0;
+  width:5px;
+  background: linear-gradient(to bottom, #FFA500, #FF8000, #FFA500);
   z-index: 9999;
 }
-
-body::before { left: 0; }
-body::after { right: 0; }
+body::before { left:0; }
+body::after { right:0; }
 
 .container {max-width:1200px;margin:0 auto;padding:0 20px;}
 
-/* Banner Header – טקסט כתום פשוט */
+/* Banner Header */
 .banner-header {
   width: 100%;
   padding: 40px 20px;
@@ -71,26 +71,34 @@ body::after { right: 0; }
 .city-item:hover {text-decoration:underline;}
 #cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
 
-/* Carousel */
-.carousel {
-  overflow: hidden;
-  width: 100%;
-  background: #000;
-  padding: 20px 0;
+/* Gallery עם שליטה על סטים של 3 תמונות */
+.gallery {
+  padding:60px 0;
+  background:#000;
+  text-align:center;
 }
-.carousel-track {
-  display: flex;
-  animation: scroll 40s linear infinite;
+.gallery-track {
+  display:flex;
+  justify-content:center;
+  gap:20px;
 }
-.carousel img {
-  width: 250px;
-  height: auto;
-  flex-shrink: 0;
+.gallery img {
+  height:150px;
+  width:auto;
+  border-radius:12px;
 }
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.gallery-controls {margin-top:20px;}
+.gallery-btn {
+  background:#FFA500;
+  border:none;
+  color:#000;
+  font-size:1.2rem;
+  padding:10px 20px;
+  cursor:pointer;
+  border-radius:10px;
+  transition:all 0.3s ease;
 }
+.gallery-btn:hover {background:#FFC000;transform:scale(1.1);}
 
 /* Reviews */
 .reviews {padding:80px 0;background:#111;}
@@ -127,7 +135,7 @@ body::after { right: 0; }
   .section-title{font-size:2rem;}
   .review-card{min-width:280px;flex-direction:column;}
   .banner-header h1{font-size:2rem;}
-  .carousel img{width:150px;}
+  .gallery img{height:120px;}
 }
 </style>
 </head>
@@ -181,27 +189,12 @@ body::after { right: 0; }
   </div>
 </section>
 
-<!-- Carousel Section -->
-<section class="carousel">
-  <div class="carousel-track">
-    <img src="taxi1.jpg" alt="מונית 1">
-    <img src="taxi2.jpg" alt="מונית 2">
-    <img src="taxi3.jpg" alt="מונית 3">
-    <img src="taxi4.jpg" alt="מונית 4">
-    <img src="taxi5.jpg" alt="מונית 5">
-    <img src="taxi6.jpg" alt="מונית 6">
-    <img src="taxi7.jpg" alt="מונית 7">
-    <img src="taxi8.jpg" alt="מונית 8">
-    <img src="taxi9.jpg" alt="מונית 9">
-    <img src="taxi1.jpg" alt="מונית 1">
-    <img src="taxi2.jpg" alt="מונית 2">
-    <img src="taxi3.jpg" alt="מונית 3">
-    <img src="taxi4.jpg" alt="מונית 4">
-    <img src="taxi5.jpg" alt="מונית 5">
-    <img src="taxi6.jpg" alt="מונית 6">
-    <img src="taxi7.jpg" alt="מונית 7">
-    <img src="taxi8.jpg" alt="מונית 8">
-    <img src="taxi9.jpg" alt="מונית 9">
+<!-- Gallery Section -->
+<section class="gallery">
+  <div class="gallery-track" id="galleryTrack"></div>
+  <div class="gallery-controls">
+    <button class="gallery-btn" onclick="changeGallery(1)">הבא →</button>
+    <button class="gallery-btn" onclick="changeGallery(-1)">← קודם</button>
   </div>
 </section>
 
@@ -249,6 +242,31 @@ document.querySelectorAll('.city-item').forEach(item => {
   });
 });
 
+// Gallery Images – סטים של 3
+const galleryImages = [
+  'taxi1.jpg','taxi2.jpg','taxi3.jpg',
+  'taxi4.jpg','taxi5.jpg','taxi6.jpg',
+  'taxi7.jpg','taxi8.jpg','taxi9.jpg'
+];
+let galleryIndex = 0;
+const galleryTrack = document.getElementById('galleryTrack');
+
+function showGallery(index){
+  galleryTrack.innerHTML = '';
+  for(let i=0;i<3;i++){
+    let imgIndex = (index*3 + i) % galleryImages.length;
+    const img = document.createElement('img');
+    img.src = galleryImages[imgIndex];
+    img.alt = `מונית ${imgIndex+1}`;
+    galleryTrack.appendChild(img);
+  }
+}
+function changeGallery(direction){
+  galleryIndex = (galleryIndex + direction + 3) % 3; // 3 סטים
+  showGallery(galleryIndex);
+}
+showGallery(galleryIndex);
+
 // Reviews
 const reviews = [
   {text:"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.", img:"avatar1.jpg"},
@@ -268,7 +286,10 @@ function slideReviews(direction){
   showReview(currentIndex);
 }
 showReview(currentIndex);
-setInterval(() => { currentIndex = (currentIndex + 1) % reviews.length; showReview(currentIndex); }, 4000);
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  showReview(currentIndex);
+}, 4000);
 
 function handleFormSubmit(event){
   event.preventDefault();
