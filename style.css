@@ -30,6 +30,8 @@ button:hover {
   background: #ff9900;
   color: #000;
 }
+
+/* --- גלריה קיימת (סטטית) --- */
 .gallery .images {
   display: flex;
   gap: 10px;
@@ -41,6 +43,30 @@ button:hover {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
 }
+
+/* --- גלריה רצה חדשה --- */
+.carousel {
+  overflow: hidden;
+  width: 100%;
+  background: #000; /* רקע שחור לדוגמה */
+  padding: 20px 0;
+}
+.carousel-track {
+  display: flex;
+  animation: scroll 40s linear infinite; /* משך = מהירות */
+}
+.carousel img {
+  width: 250px;   /* תשנה לפי הגודל שאתה רוצה */
+  height: auto;
+  flex-shrink: 0; /* חשוב – שלא יתכווץ */
+}
+/* האנימציה מזיזה את כל הסט הראשון החוצה בדיוק */
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* --- Loader --- */
 #loader {
   position: fixed;
   inset: 0;
@@ -83,30 +109,28 @@ button:hover {
   from { width: 0; }
   to { width: 100%; }
 }
+
+/* --- Reviews --- */
 .reviews {
     padding: 50px 20px;
     border-bottom: 2px solid #FFA500;
     text-align: center;
 }
-
 .section-title {
     font-size: 2.5em;
     margin-bottom: 30px;
     text-shadow: 0 0 10px #FFA500;
 }
-
 .reviews-container {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
 }
-
 .reviews-slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
-
 .review {
     flex: 0 0 100%;
     background: #111;
@@ -117,11 +141,9 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 0 10px #FFA500;
 }
-
 .slider-controls {
     margin-top: 20px;
 }
-
 .slider-btn {
     background: #FFA500;
     border: none;
@@ -133,38 +155,33 @@ button:hover {
     box-shadow: 0 0 20px #FFA500;
     transition: all 0.2s ease;
 }
-
 .slider-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 40px #FFA500, 0 0 60px #FFA500 inset;
 }
 
-/* Map Section */
+/* --- Map Section --- */
 .map {
   padding: 60px 20px;
   background: #111;
   color: #fff;
   text-align: center;
 }
-
 .map-container {
   margin-bottom: 20px;
 }
-
 .map iframe {
   width: 100%;
   height: 450px;
   border: 0;
   border-radius: 15px;
 }
-
 .map-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
   margin-top: 15px;
 }
-
 .btn-waze,
 .btn-google-maps {
   padding: 12px 24px;
@@ -176,23 +193,19 @@ button:hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
 .btn-waze {
   background: #4f9e4f;
   color: #fff;
 }
-
 .btn-waze:hover {
   background: #3b7a3b;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(79, 158, 79, 0.4);
 }
-
 .btn-google-maps {
   background: #4285f4;
   color: #fff;
 }
-
 .btn-google-maps:hover {
   background: #357ae8;
   transform: translateY(-2px);
