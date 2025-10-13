@@ -47,102 +47,45 @@ body::after { right:0; }
   font-size: 3rem;
   font-weight: 900;
   color: #FFA500;
+  margin-bottom: 15px;
 }
-.banner-header .phone-number {
-  font-size: 2rem; /* גודל גדול וברור */
-  font-weight: 700; /* מודגש */
-  color: #FFD700; /* צבע צהוב בולט */
-  margin-top: 10px; /* רווח מעל הטלפון */
+.banner-header .phone-number a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: transform 0.2s ease;
 }
+.banner-header .phone-number a.call {color: #FFD700;} /* צהוב לשיחה */
+.banner-header .phone-number a.whatsapp {color: #25D366;} /* ירוק לווצאפ */
+.banner-header .phone-number a:hover {transform: scale(1.1);}
 
 /* Hero */
-.hero {background:#111;padding:60px 0;text-align:center;}
+.hero {background:#111;padding:60px 20px;text-align:center;border-radius:15px;margin-bottom:50px;}
 .hero h2 {font-size:3rem;font-weight:700;margin-bottom:20px;color:#FFA500;}
 .hero p {font-size:1.3rem;margin-bottom:40px;color:#fff;}
 
 /* Services */
-.services {padding:80px 0;}
+.services {padding:80px 20px;}
 .section-title {text-align:center;font-size:2.5rem;font-weight:700;margin-bottom:50px;color:#FFA500;}
 .services-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:60px;}
 .service-card {background:#111;padding:30px;border-radius:15px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.3);transition:all 0.3s ease;border-top:4px solid #FFA500;}
 .service-card:hover {transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.5);}
-.service-icon {width:60px;height:60px;background:#FFA500;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;}
 .service-card h3 {font-size:1.5rem;font-weight:600;margin-bottom:15px;color:#FFA500;}
 .service-card p {color:#fff;line-height:1.6;}
 
-/* Cities */
-.cities {padding:80px 0;background:#111;color:#FFA500;text-align:center;}
-.cities-list {font-size:1.1rem;line-height:2;}
-.city-item {cursor:pointer;color:#FFA500;transition:all 0.3s ease;}
-.city-item:hover {text-decoration:underline;}
-#cityContent {margin-top:15px;color:#fff;font-size:1.1rem;transition:all 0.3s ease;}
-
-/* Gallery עם שליטה על סטים של 3 תמונות */
-.gallery {
-  padding:60px 0;
-  background:#000;
-  text-align:center;
-}
-.gallery-track {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-}
-.gallery img {
-  height:150px;
-  width:auto;
-  border-radius:12px;
-}
-.gallery-controls {margin-top:20px;}
-.gallery-btn {
-  background:#FFA500;
-  border:none;
-  color:#000;
-  font-size:1.2rem;
-  padding:10px 20px;
-  cursor:pointer;
-  border-radius:10px;
-  transition:all 0.3s ease;
-}
-.gallery-btn:hover {background:#FFC000;transform:scale(1.1);}
-
-/* Reviews */
-.reviews {padding:80px 0;background:#111;}
-.reviews-container {position:relative;overflow:hidden;text-align:center;}
-.reviews-slider {display:flex;justify-content:center;transition:transform 0.5s ease;gap:30px;}
-.review-card {min-width:350px;background:#222;padding:20px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);flex-shrink:0;margin:auto;display:flex;align-items:center;gap:15px;}
-.review-card img {width:50px;height:50px;border-radius:50%;object-fit:cover;}
-.review-text {color:#fff;font-style:italic;}
-.slider-controls {display:flex;justify-content:center;gap:15px;margin-top:30px;}
-.slider-btn {width:50px;height:50px;border:none;background:#FFA500;color:#000;border-radius:50%;font-size:20px;cursor:pointer;transition:all 0.3s ease;}
-.slider-btn:hover {background:#FFC000;transform:scale(1.1);}
-
-/* Contact */
-.contact {padding:80px 0;background:#111;}
-.contact-form {max-width:600px;margin:0 auto;background:#222;padding:40px;border-radius:15px;box-shadow:0 10px 30px rgba(255,165,0,0.2);}
-.form-group {margin-bottom:25px;}
-.form-group label {display:block;margin-bottom:8px;font-weight:600;color:#FFA500;}
-.form-group input,.form-group textarea {width:100%;padding:15px;border:2px solid #333;border-radius:8px;font-size:1rem;font-family:'Heebo',Arial,sans-serif;transition:border-color 0.3s ease;background:#111;color:#fff;}
-.form-group input:focus,.form-group textarea:focus {outline:none;border-color:#FFA500;}
-.form-group textarea {height:120px;resize:vertical;}
-.submit-btn {width:100%;padding:18px;background:#FFA500;color:#000;border:none;border-radius:8px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;}
-.submit-btn:hover {background:#FFC000;transform:translateY(-2px);}
-
 /* Footer */
-.footer {background:#000;color:#FFA500;padding:40px 0;text-align:center;display:flex;justify-content:center;align-items:center;gap:10px;}
+.footer {background:#000;color:#FFA500;padding:40px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;}
 .footer-logo {font-size:1.5rem;font-weight:700;}
 .footer-contact {font-size:1rem;}
-.footer-separator {margin:0 10px;color:#FFA500;}
 
 /* Responsive */
 @media(max-width:768px){
+  .banner-header h1{font-size:2rem;}
+  .banner-header .phone-number a{font-size:1.5rem;}
   .hero h2{font-size:2rem;}
   .hero p{font-size:1.1rem;}
   .section-title{font-size:2rem;}
-  .review-card{min-width:280px;flex-direction:column;}
-  .banner-header h1{font-size:2rem;}
-  .banner-header .phone-number{font-size:1.5rem;}
-  .gallery img{height:120px;}
 }
 </style>
 </head>
@@ -151,8 +94,46 @@ body::after { right:0; }
 <!-- Banner Header -->
 <header class="banner-header">
   <h1>מוניות העיר באר שבע</h1>
-  <p class="phone-number">050-855-1771 - 054-551-5868</p>
+  <p class="phone-number">
+    <a href="tel:0508551771" class="call">050-855-1771</a> |
+    <a href="tel:0545515868" class="call">054-551-5868</a>
+  </p>
+  <p class="phone-number">
+    <a href="https://wa.me/972508551771" target="_blank" class="whatsapp">שלח הודעה בווצאפ 050-855-1771</a> |
+    <a href="https://wa.me/972545515868" target="_blank" class="whatsapp">שלח הודעה בווצאפ 054-551-5868</a>
+  </p>
 </header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h2>נסיעות מהירות ובטוחות מבאר שבע לכל הארץ</h2>
+  <p>מוניות פרטיות עם נהגים מקצועיים, שירות 24/7, נסיעות לשדה תעופה וכל חלקי הדרום והנגב.</p>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+  <h2 class="section-title">השירותים שלנו</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>נסיעות לנתב"ג</h3>
+      <p>הגעה בזמן ובבטחה לכל טיסותיך מבאר שבע.</p>
+    </div>
+    <div class="service-card">
+      <h3>נסיעות בתוך באר שבע</h3>
+      <p>שירות מהיר ונוח לכל רחבי העיר.</p>
+    </div>
+    <div class="service-card">
+      <h3>נסיעות לכל חלקי הארץ</h3>
+      <p>נסיעות פרטיות, נוחות ובטוחות לכל יעד.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-logo">מוניות העיר באר שבע</div>
+  <div class="footer-contact">טלפון: 050-855-1771 | 054-551-5868</div>
+</footer>
 
 </body>
 </html>
@@ -242,7 +223,7 @@ body::after { right:0; }
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-separator">|</div>
-  <div class="footer-logo">📞 050-855-1771 |זמינים בווצאפ| 054-551-5868|</div>
+  <div class="footer-logo"> 050-855-1771 זמינים בווצאפ | 054-551-5868 | </div>
 </footer>
 
 <script>
@@ -313,6 +294,7 @@ function handleFormSubmit(event){
 
 </body>
 </html>
+
 
 
 
