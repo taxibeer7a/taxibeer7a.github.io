@@ -290,113 +290,127 @@ body::after { right:0; }
 </section>
 
 <!-- Reviews Section -->
-<section class="reviews">
+<section class="reviews" style="background:#111; padding:80px 20px; text-align:center; border-top:4px solid #FFA500; border-bottom:4px solid #FFA500;">
   <div class="container">
-    <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+    <h2 class="section-title" style="color:#FFA500; margin-bottom:50px;">מה הלקוחות שלנו אומרים</h2>
 
-    <div class="reviews-container">
+    <div class="reviews-container" style="max-width:600px; margin:0 auto; position:relative;">
       <div class="reviews-slider" id="reviewsSlider">
-        <!-- 15 כרטיסי ביקורות כאן, כמו בקוד הקודם -->
-        <!-- ... (שמרנו את כל הביקורות שלך) ... -->
+        <!-- כרטיסי ביקורות דרך JS -->
       </div>
 
       <!-- Slider Controls -->
       <div class="slider-controls">
-        <button class="slider-btn" onclick="slideReviews('prev')">←</button>
-        <button class="slider-btn" onclick="slideReviews('next')">→</button>
+        <button class="slider-btn" onclick="slideReviews('prev')">→</button>
+        <button class="slider-btn" onclick="slideReviews('next')">←</button>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-.reviews {
-  background: #f0f0f0; /* רקע בהיר לאזור הסליידר */
-  padding: 60px 20px;
-  text-align: center;
-  direction: ltr; /* חשוב כדי שהחצים יהיו בכיוון נכון */
-}
-.reviews .section-title {
-  font-size: 32px;
-  margin-bottom: 40px;
-  color: #000;
-}
-.reviews-container {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-}
 .reviews-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  justify-content: center;
 }
+
 .review-card {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  margin: 0 5px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width:100%;
+  max-width:500px;
+  background:#222;
+  color:#fff;
+  padding:30px 20px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  text-align:center;
+  margin:0 auto;
 }
+
+.review-card img {
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:20px;
+}
+
 .review-card p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  color: #000;
+  font-size:16px;
+  line-height:1.5;
+  color:#fff;
+  margin-bottom:15px;
 }
+
 .review-card h4 {
-  font-size: 16px;
-  color: #555;
+  font-size:14px;
+  color:#FFA500;
+  margin:0;
 }
+
 .slider-controls {
-  margin-top: 20px;
-  text-align: center;
+  margin-top:25px;
+  text-align:center;
 }
+
 .slider-btn {
-  padding: 10px 20px;
-  font-size: 18px;
-  margin: 0 5px;
-  cursor: pointer;
-  border: none;
-  background: #000;
-  color: #fff;
-  border-radius: 8px;
-  transition: 0.3s;
+  padding:10px 20px;
+  font-size:18px;
+  margin:0 5px;
+  cursor:pointer;
+  border:none;
+  background:#FFA500;
+  color:#000;
+  border-radius:8px;
+  transition:0.3s;
 }
+
 .slider-btn:hover {
-  background: #333;
+  background:#FFC000;
 }
 </style>
 
 <script>
-let currentIndex = 0;
-const reviews = document.querySelectorAll('.review-card');
+const reviewsData = [
+  {text:"שירות מצוין! הגיעו מהר, נהג מקצועי ונחמד. בהחלט אמליץ לכל חבריי.", author:"דוד ל.", img:"avatar1.jpg"},
+  {text:"נסיעה נוחה ובטוחה. הרכב היה נקי ומסודר, והמחיר הוגן מאוד.", author:"מרים ק.", img:"avatar2.jpg"},
+  {text:"שירות 24/7 אמיתי. התקשרתי בלילה והגיעה מונית תוך דקות ספורות. מקצועיים ברמה גבוהה!", author:"יוסי ר.", img:"avatar3.jpg"},
+  {text:"נהגים אדיבים ושירות מהיר. מאוד מרוצה מהנסיעה שלי היום.", author:"סיון מ.", img:"avatar4.jpg"},
+  {text:"רכב נקי ומסודר, נסיעה נעימה ובטוחה. תודה רבה!", author:"אילנה פ.", img:"avatar5.jpg"}
+];
 
-function showReview(index) {
-  reviews.forEach((review, i) => {
-    review.style.transform = `translateX(${(i - index) * 100}%)`;
+const reviewsSlider = document.getElementById("reviewsSlider");
+let currentIndex = 0;
+
+// יוצר את כל הביקורות, אבל רק אחת מוצגת
+function renderReviews() {
+  reviewsSlider.innerHTML = '';
+  reviewsData.forEach(review => {
+    const card = document.createElement('div');
+    card.classList.add('review-card');
+    card.innerHTML = `<img src="${review.img}" alt="avatar"><p>"${review.text}"</p><h4>– ${review.author}</h4>`;
+    card.style.display = 'none'; // מסתיר את כל הכרטיסים בהתחלה
+    reviewsSlider.appendChild(card);
   });
 }
 
-function slideReviews(direction) {
-  if (direction === 'next') {
-    currentIndex = (currentIndex + 1) % reviews.length;
-  } else if (direction === 'prev') {
-    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-  }
+// מראה ביקורת ספציפית
+function showReview(index){
+  const cards = reviewsSlider.querySelectorAll('.review-card');
+  cards.forEach((card, i) => card.style.display = (i === index) ? 'block' : 'none');
+}
+
+// כפתורי מעבר
+function slideReviews(direction){
+  if(direction==='next') currentIndex=(currentIndex+1)%reviewsData.length;
+  else currentIndex=(currentIndex-1+reviewsData.length)%reviewsData.length;
   showReview(currentIndex);
 }
 
 // Initialize
+renderReviews();
 showReview(currentIndex);
-
-// אוטומטי כל 5 שניות
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showReview(currentIndex);
-}, 5000);
+setInterval(() => { slideReviews('next'); }, 5000);
 </script>
 
 
@@ -455,74 +469,5 @@ setInterval(() => {
     </a>
   </div>
 </header>
-
-
-<script>
-// Cities toggle
-document.querySelectorAll('.city-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.getElementById('cityContent').innerText = item.dataset.content;
-  });
-});
-
-// Gallery Images – סטים של 3
-const galleryImages = [
-  'taxi1.jpg','taxi2.jpg','taxi3.jpg',
-  'taxi4.jpg','taxi5.jpg','taxi6.jpg',
-  'taxi7.jpg','taxi8.jpg','taxi9.jpg'
-];
-let galleryIndex = 0;
-const galleryTrack = document.getElementById('galleryTrack');
-
-function showGallery(index){
-  galleryTrack.innerHTML = '';
-  for(let i=0;i<3;i++){
-    let imgIndex = (index*3 + i) % galleryImages.length;
-    const img = document.createElement('img');
-    img.src = galleryImages[imgIndex];
-    img.alt = `מונית ${imgIndex+1}`;
-    galleryTrack.appendChild(img);
-  }
-}
-function changeGallery(direction){
-  galleryIndex = (galleryIndex + direction + 3) % 3; // 3 סטים
-  showGallery(galleryIndex);
-}
-showGallery(galleryIndex);
-
-// Reviews
-const reviews = [
-  {text:"שירות מעולה! מונית הגיעה בזמן ונהג אדיב מאוד. – יוסי ח.", img:"avatar1.jpg"},
-  {text:"נהג מקצועי ורכב נקי, אחלה חוויה. – שרה ל.", img:"avatar2.jpg"},
-  {text:"‏הזמנתי בשעת לילה והכול היה מושלם. – דני פ.", img:"avatar3.jpg"},
-  {text:"שירות מהיר, נהג אדיב ומחיר הוגן. – מיכל ק.", img:"avatar4.jpg"}
-];
-const reviewsSlider = document.getElementById("reviewsSlider");
-let currentIndex = 0;
-function showReview(index){
-  const r = reviews[index];
-  reviewsSlider.innerHTML = `<div class="review-card"><img src="${r.img}" alt="avatar"><div class="review-text">${r.text}</div></div>`;
-}
-function slideReviews(direction){
-  if(direction==='next'){currentIndex=(currentIndex+1)%reviews.length;}
-  else{currentIndex=(currentIndex-1+reviews.length)%reviews.length;}
-  showReview(currentIndex);
-}
-showReview(currentIndex);
-setInterval(() => {
-  currentIndex = (currentIndex + 1) % reviews.length;
-  showReview(currentIndex);
-}, 4000);
-
-function handleFormSubmit(event){
-  event.preventDefault();
-  const data = new FormData(event.target);
-  const msg = Object.fromEntries(data);
-  alert(`פנייה נשלחה!\n\nשם: ${msg.name}\nטלפון: ${msg.phone}\nמקום איסוף: ${msg.pickup}\nיעד: ${msg.destination}\nהודעה: ${msg.message}`);
-  event.target.reset();
-}
-</script>
-
 </body>
 </html>
-
