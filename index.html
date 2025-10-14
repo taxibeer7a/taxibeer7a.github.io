@@ -186,22 +186,6 @@ body::after { right:0; }
   </div>
 </header>
 
-<!-- סקריפט לבחירת מספר -->
-<script>
-function chooseNumber() {
-  const choice = prompt("לאיזה מספר ברצונך להתקשר?\n1️⃣ 050-855-1771\n2️⃣ 054-551-5868");
-  if (!choice) return;
-
-  if (choice === "1") {
-    window.location.href = "tel:+972508551771";
-  } else if (choice === "2") {
-    window.location.href = "tel:+972545515868";
-  } else {
-    alert("נא לבחור 1 או 2 😊");
-  }
-}
-</script>
-
 <!-- Schema.org JSON-LD -->
 <script type="application/ld+json">
 {
@@ -396,6 +380,7 @@ function handleFormSubmit(event){
 
 </body>
 </html>
+
 
 
 
