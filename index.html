@@ -145,7 +145,7 @@ body::after { right:0; }
 <header class="banner-header" style="padding:16px; text-align:center;">
   <h1 style="margin:0 0 8px 0;">מוניות העיר באר שבע</h1>
 
-  <!-- מספרים גלויים כטקסט + קישורי tel/wa.me -->
+  <!-- מספרים גלויים כטקסט + קישורי tel -->
   <p class="phone-number" style="margin:0; font-size:18px; font-weight:700;">
     <a href="tel:+972508551771" style="color:inherit; text-decoration:none; margin-right:12px;">
       050-855-1771
@@ -156,18 +156,66 @@ body::after { right:0; }
     </a>
   </p>
 
-  <!-- כפתור/קישור וווצאפ ממורכז מתחת למספרים -->
+  <!-- כפתור וואצאפ -->
   <div class="wa-action" style="text-align:center; margin-top:10px;">
     <a
       href="https://wa.me/972508551771"
       target="_blank"
       rel="noopener noreferrer"
-      style="display:inline-block; padding:10px 18px; border-radius:8px; background:#25D366; color:#fff; text-decoration:none; font-weight:700;"
+      style="display:inline-block; padding:10px 18px; border-radius:8px; background:#25D366; color:#fff; text-decoration:none; font-weight:700; margin-bottom:10px;"
       aria-label="שלח הודעה בווצאפ ל־050-855-1771"
     >
       שלח הודעה בווצאפ
     </a>
   </div>
+
+  <!-- כפתור חיוג מרכזי -->
+  <div class="call-action" style="text-align:center; margin-top:5px;">
+    <button
+      onclick="chooseNumber()"
+      style="padding:10px 18px; border:none; border-radius:8px; background:#000; color:#fff; font-weight:700; cursor:pointer;"
+    >
+      התקשר עכשיו
+    </button>
+  </div>
+
+  <!-- מספרים בפורמט E.164 בקוד המקור -->
+  <div style="display:none;">
+    <span class="e164">+972508551771</span>
+    <span class="e164">+972545515868</span>
+  </div>
+</header>
+
+<!-- סקריפט לבחירת מספר -->
+<script>
+function chooseNumber() {
+  const choice = prompt("לאיזה מספר ברצונך להתקשר?\n1️⃣ 050-855-1771\n2️⃣ 054-551-5868");
+  if (!choice) return;
+
+  if (choice === "1") {
+    window.location.href = "tel:+972508551771";
+  } else if (choice === "2") {
+    window.location.href = "tel:+972545515868";
+  } else {
+    alert("נא לבחור 1 או 2 😊");
+  }
+}
+</script>
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "מוניות העיר באר שבע",
+  "telephone": [
+    "+972508551771",
+    "+972545515868"
+  ],
+  "url": "https://your-domain.example"
+}
+</script>
+
 
   <!-- מספרים בפורמט E.164 בקוד המקור (גלויים למנועי חיפוש / סורקים) -->
   <div style="display:none;">
@@ -348,6 +396,7 @@ function handleFormSubmit(event){
 
 </body>
 </html>
+
 
 
 
