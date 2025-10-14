@@ -382,6 +382,35 @@ body::after { right:0; }
   </div>
 </section>
 
+  <script>
+let currentIndex = 0;
+const reviews = document.querySelectorAll('.review-card');
+
+function showReview(index) {
+  reviews.forEach((review, i) => {
+    review.style.transform = `translateX(${(i - index) * 100}%)`;
+  });
+}
+
+function slideReviews(direction) {
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % reviews.length;
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
+  }
+  showReview(currentIndex);
+}
+
+// Initialize
+showReview(currentIndex);
+
+// אופציונלי: מעבר אוטומטי כל 5 שניות
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % reviews.length;
+  showReview(currentIndex);
+}, 5000);
+</script>
+  
 <style>
 /* Reviews Section Styles */
 .reviews {
@@ -591,24 +620,3 @@ function handleFormSubmit(event){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
